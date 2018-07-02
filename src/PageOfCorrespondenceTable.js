@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import ActionCollection from './ActionCollection';
 import FilterCollection from './FilterCollection';
-import List from './List';
+import PullDown from './PullDown';
 
 class PageOfCorrespondenceTable extends Component{
 	render(){
 		var fc = new FilterCollection();
+		var f_names = fc.values("name");
 		var ac = new ActionCollection();
+		var a_names = ac.values("name");
+
 		return(
 				<div>
-				Filters List
-				<List data = {fc.collection}/>
-				Actionss List
-				<List data = {ac.collection}/>
+				Filters
+				<PullDown data = {f_names}/>
+				Actions
+				<PullDown data = {a_names}/>
 				</div>
 		);
 	}
