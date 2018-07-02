@@ -1,6 +1,6 @@
 export default class FilterCollection{
 	constructor(){
-		const filter_collection = [
+		const collection = [
 			{"id":"1",
 			 "name":"summary_delete",
 			 "condition":"match:summary:.",
@@ -14,6 +14,6 @@ export default class FilterCollection{
 			 "condition":"match:summary:.",
 			 "modifier":"replace:location:"}
 		];
-		this.filter_collection = filter_collection
+		this.collection = collection
 	}
 }

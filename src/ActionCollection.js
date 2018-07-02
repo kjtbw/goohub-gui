@@ -1,6 +1,6 @@
 export default class ActionCollection{
 	constructor(){
-		const action_collection =
+		const collection =
 			  [{"id":"1",
 				"name":"stdout",
 				"converter":"convert_sentence",
@@ -18,6 +18,6 @@ export default class ActionCollection{
 				"converter":"convert_sentence",
 				"informant":"inform_mail"}
 			  ];
-		this.action_collection = action_collection
+		this.collection = collection
 	}
 }

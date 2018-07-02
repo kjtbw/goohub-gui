@@ -10,9 +10,9 @@ class PageOfCorrespondenceTable extends Component{
 		return(
 				<div>
 				Filters List
-				<List data = {fc.filter_collection}/>
+				<List data = {fc.collection}/>
 				Actionss List
-				<List data = {ac.action_collection}/>
+				<List data = {ac.collection}/>
 				</div>
 		);
 	}
