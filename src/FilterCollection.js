@@ -16,4 +16,14 @@ export default class FilterCollection{
 		];
 		this.collection = collection
 	}
+
+	values(key){
+		var values = [];
+		this.collection.map(hash => {
+			values.push(hash[key]);
+		});
+		return values;
+
+
+	}
 }
