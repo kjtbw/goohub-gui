@@ -6,11 +6,7 @@ const List = (props) => {
 		return <li>{id}</li>;
 	});
 
-	return (
-			<ul>
-			{list_items}
-		</ul>
-	);
+	return (<ol>{list_items}</ol>);
 }
 
 export default List;
