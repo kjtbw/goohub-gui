@@ -1,22 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './index.css';
-//import App from './App';
+import Home from './Home';
+import PageOfFilter from './PageOfFilter';
+import PageOfAction from './PageOfAction';
 import PageOfCorrespondenceTable from './PageOfCorrespondenceTable';
 import registerServiceWorker from './registerServiceWorker';
 
-// ReactDOM.render(
-// 		<div>Component</div>,
-// 	document.getElementById('root')
-// )
+const App =()=> (
+	<div>
+	  <Router>
+		<div>
+		  <Link to="/">Home</Link>&nbsp;
+		  <Link to="/filter">Filter</Link>&nbsp;
+          <Link to="/action">Action</Link>&nbsp;
+          <Link to="/correspondenceTable">CorrespondenceTable</Link>&nbsp;
 
-// ReactDOM.render(
-// 		<App name = "Eiji"/>, document.getElementById('root')
-// );
+		  <Route path="/" component={Home}/>
+		  <Route path="/filter" component={PageOfFilter}/>
+          <Route path="/action" component={PageOfAction}/>
+		  <Route path="/correspondenceTable" component={PageOfCorrespondenceTable}/>
+		</div>
+	  </Router>
+	</div>
+)
 
 ReactDOM.render(
-	 	<PageOfCorrespondenceTable />, document.getElementById('root')
-
+		<App />, document.getElementById('root')
 )
 
 registerServiceWorker();
