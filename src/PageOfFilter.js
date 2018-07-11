@@ -3,11 +3,13 @@ import FilterCollection from './FilterCollection';
 import PullDown from './PullDown';
 import TextBox from './TextBox';
 import SubmitButton from './SubmitButton';
+import List from './List';
 
 class PageOfFilter extends Component{
 	constructor() {
 		super();
 		var fc = new FilterCollection();
+        var f_names = fc.values("name");
 		var methods = fc.methods();
 		var columns = [
 			"summary",
@@ -19,6 +21,7 @@ class PageOfFilter extends Component{
 			"rrule"
 		];
 		this.state = {
+            f_names: f_names,
 			methods: methods,
 			condition_method: methods[0],
 			columns: columns,
@@ -34,6 +37,7 @@ class PageOfFilter extends Component{
 		this.handleMM = this.handleMM.bind(this);
 		this.handleMC = this.handleMC.bind(this);
 		this.handleMA = this.handleMA.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -44,20 +48,33 @@ class PageOfFilter extends Component{
 	handleMC(event){this.setState({modifier_column: event.target.value});}
 	handleMA(event){this.setState({modifier_arg: event.target.value});}
 
-	handleSubmit(event) {
-        alert('Filter: \ncondition_method: ' + this.state.condition_method +
+	handleNameChange(event){
+		this.setState({
+			name: event.target.value
+		});
+	}
+
+
+       handleSubmit(event) {
+        alert('Filter:\nname: ' + this.state.name +
+              '\ncondition_method:'  + this.state.condition_method +
 			  '\ncondition_column: ' + this.state.condition_column +
 			  '\ncondition_arg: ' + this.state.condition_arg +
 			  '\nmodifier_method:' + this.state.modifier_method +
 			  '\nmodifier_column: ' + this.state.modifier_column +
 			  '\nmodifier_arg: ' + this.state.modifier_arg
 			 );
-        event.preventDefault();
+           this.state.f_names.push(this.state.name);
+           this.setState(this.state);
+           event.preventDefault();
     }
 
 	render(){
 		return(
 			<div>
+              name
+              <TextBox handleTextChange = {this.handleNameChange}/>
+              <p/>
 			  condition
 			  <br/>
 			  method
@@ -88,6 +105,10 @@ class PageOfFilter extends Component{
 
 			  <p/>
 			  <SubmitButton handleSubmit = {this.handleSubmit}/>
+              <p/>
+              filters
+              <br/>
+              <List data = {this.state.f_names}/>
 			</div>
 		);
 	}
