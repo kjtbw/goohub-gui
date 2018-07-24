@@ -4,6 +4,7 @@ import PullDown from './PullDown';
 import TextBox from './TextBox';
 import SubmitButton from './SubmitButton';
 import List from './List';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class PageOfAction extends Component{
 	constructor() {
@@ -74,6 +75,7 @@ class PageOfAction extends Component{
               actions
               <br/>
               <List data = {this.state.a_names}/>
+              <Link to="/calendar">カレンダへ戻る</Link>&nbsp;
 			</div>
 		);
 	}

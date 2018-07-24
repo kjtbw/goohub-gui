@@ -4,6 +4,7 @@ import PullDown from './PullDown';
 import TextBox from './TextBox';
 import SubmitButton from './SubmitButton';
 import List from './List';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class PageOfFilter extends Component{
 	constructor() {
@@ -110,6 +111,7 @@ class PageOfFilter extends Component{
               filters
               <br/>
               <List data = {this.state.f_names}/>
+              <Link to="/action">アクションを設定する</Link>&nbsp;
 			</div>
 		);
 	}

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
+const App = (props) => {
     return (
       <div className="App">
         <header className="App-header">
@@ -13,10 +13,9 @@ class App extends Component {
 			<p className="App-intro">
 			To get started, edit <code>src/App.js</code> and save to reload.
 			</p>
-			<p className="hello">Hello, world</p>
-			</div>
+			<p className="hello">Hello, {props.name}</p>
+		</div>
     );
-  }
 }
 
 export default App;
