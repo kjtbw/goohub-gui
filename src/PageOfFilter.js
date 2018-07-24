@@ -18,7 +18,8 @@ class PageOfFilter extends Component{
 			"location",
 			"attendee",
 			"description",
-			"rrule"
+			"rrule",
+            "*"
 		];
 		this.state = {
             f_names: f_names,

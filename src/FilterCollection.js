@@ -3,16 +3,20 @@ export default class FilterCollection{
 		const collection = [
 			{"id":"1",
 			 "name":"summary_delete",
-			 "condition":"match:summary:.",
+			 "condition":"include:summary:.",
 			 "modifier":"replace:summary:"},
 			{"id":"2",
 			 "name":"created_delete",
-			 "condition":"match:summary:.",
+			 "condition":"include:summary:.",
 			 "modifier":"replace:created:"},
 			{"id":"3",
 			 "name":"location_delete",
-			 "condition":"match:summary:.",
-			 "modifier":"replace:location:"}
+			 "condition":"include:summary:.",
+			 "modifier":"replace:location:"},
+            {"id":"4",
+			 "name":"after_17PM__delete",
+			 "condition":"after:dtstart:17",
+			 "modifier":"replace:*:nil"}
 		];
 		this.collection = collection;
 	}

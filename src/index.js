@@ -8,7 +8,7 @@ import PageOfAction from './PageOfAction';
 import PageOfCorrespondenceTable from './PageOfCorrespondenceTable';
 import registerServiceWorker from './registerServiceWorker';
 
-const App =()=> (
+const App = () => (
 	<div>
 	  <Router>
 		<div>

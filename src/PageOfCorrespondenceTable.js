@@ -17,8 +17,8 @@ class PageOfCorrespondenceTable extends Component{
             name: "",
             calendar_id: "",
             ct_names: [],
-			f_names: f_names,
-			a_names: a_names,
+			f_names: f_names.concat(["filter1", "filter2", "filter3"]),
+			a_names: a_names.concat(["action1","action2"]),
 			f_name: f_names[0],
 			a_name: a_names[0]
 		};
