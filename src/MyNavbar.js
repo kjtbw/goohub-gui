@@ -16,12 +16,6 @@ class MyNavbar extends Component{
                   <Navbar.Text>
                     <Link to="/calendar">Calendar</Link>&nbsp;
                   </Navbar.Text>
-                  <Navbar.Text>
-                    <Link to="/Action">Action</Link>&nbsp;
-                  </Navbar.Text>
-                  <Navbar.Text>
-                    <Link to="/filter">Filter</Link>&nbsp;
-                  </Navbar.Text>
                 </Nav>
               </Navbar>
             </div>
