@@ -1,90 +1,62 @@
 export default [
   {
-    'title': 'All Day Event very long title',
+    'title': '打合せ',
     'allDay': true,
-    'start': new Date(2018, 7, 0),
-    'end': new Date(2018, 7, 1)
+      'start': new Date(2018, 7, 31, 10, 0, 0),
+      'end': new Date(2018, 7, 31, 12, 0, 0)
   },
   {
-    'title': 'Long Event',
-    'start': new Date(2018, 7, 7),
-    'end': new Date(2018, 7, 10)
-  },
-
-  {
-    'title': 'DTS STARTS',
-    'start': new Date(2018, 7, 13, 0, 0, 0),
-    'end': new Date(2018, 7, 20, 0, 0, 0)
+    'title': '同窓会',
+      'start': new Date(2018, 7, 18, 19, 0, 0),
+      'end': new Date(2018, 7, 18, 22, 0, 0)
   },
 
   {
-    'title': 'DTS ENDS',
-    'start': new Date(2018, 7, 6, 0, 0, 0),
-    'end': new Date(2018, 7, 13, 0, 0, 0)
+    'title': '出張',
+    'start': new Date(2018, 7, 20, 0, 0, 0),
+    'end': new Date(2018, 7, 22, 0, 0, 0)
   },
 
   {
-    'title': 'Some Event',
-    'start': new Date(2018, 7, 9, 0, 0, 0),
-    'end': new Date(2018, 7, 9, 0, 0, 0)
+    'title': '通院',
+    'start': new Date(2018, 7, 9, 14, 0, 0),
+    'end': new Date(2018, 7, 9, 16, 0, 0)
   },
   {
-    'title': 'Conference',
-    'start': new Date(2018, 7, 11),
-    'end': new Date(2018, 7, 13),
-    desc: 'Big conference for important people'
+    'title': '講義',
+      'start': new Date(2018, 7, 2, 9, 0, 0),
+      'end': new Date(2018, 7, 2, 11, 0, 0),
   },
+    {
+        'title': '講義',
+        'start': new Date(2018, 7, 9, 9, 0, 0),
+        'end': new Date(2018, 7, 9, 11, 0, 0),
+    },
   {
-    'title': 'Meeting',
-    'start': new Date(2018, 7, 12, 10, 30, 0, 0),
-    'end': new Date(2018, 7, 12, 12, 30, 0, 0),
+    'title': '会議',
+    'start': new Date(2018, 7, 6, 10, 30, 0, 0),
+    'end': new Date(2018, 7, 6, 12, 30, 0, 0),
     desc: 'Pre-meeting meeting, to prepare for the meeting'
   },
   {
-    'title': 'Lunch',
+    'title': '昼食会',
     'start': new Date(2018, 7, 12, 12, 0, 0, 0),
     'end': new Date(2018, 7, 12, 13, 0, 0, 0),
     desc: 'Power lunch'
   },
   {
-    'title': 'Meeting',
-    'start': new Date(2018, 7, 12, 14, 0, 0, 0),
-    'end': new Date(2018, 7, 12, 15, 0, 0, 0)
+    'title': '会議',
+    'start': new Date(2018, 7, 23, 14, 0, 0, 0),
+    'end': new Date(2018, 7, 23, 15, 0, 0, 0)
   },
   {
-    'title': 'Happy Hour',
-    'start': new Date(2018, 7, 12, 17, 0, 0, 0),
-    'end': new Date(2018, 7, 12, 17, 30, 0, 0),
-    desc: 'Most important meal of the day'
+    'title': '夕食会',
+    'start': new Date(2018, 7, 4, 20, 0, 0, 0),
+    'end': new Date(2018, 7, 4, 21, 0, 0, 0)
   },
   {
-    'title': 'Dinner',
-    'start': new Date(2018, 7, 12, 20, 0, 0, 0),
-    'end': new Date(2018, 7, 12, 21, 0, 0, 0)
-  },
-  {
-    'title': 'Birthday Party',
-    'start': new Date(2018, 7, 13, 7, 0, 0),
-    'end': new Date(2018, 7, 13, 10, 30, 0)
-  },
-  {
-    'title': 'Birthday Party 2',
-    'start': new Date(2018, 7, 13, 7, 0, 0),
-    'end': new Date(2018, 7, 13, 10, 30, 0)
-  },
-  {
-    'title': 'Birthday Party 3',
-    'start': new Date(2018, 7, 13, 7, 0, 0),
-    'end': new Date(2018, 7, 13, 10, 30, 0)
-  },
-  {
-    'title': 'Late Night Event',
-    'start': new Date(2018, 7, 17, 19, 30, 0),
-    'end': new Date(2018, 7, 18, 2, 0, 0)
-  },
-  {
-    'title': 'Multi-day Event',
-    'start': new Date(2018, 7, 20, 19, 30, 0),
-    'end': new Date(2018, 7, 22, 2, 0, 0)
+    'title': '盆休み',
+    'start': new Date(2018, 7, 13, 19, 30, 0),
+    'end': new Date(2018, 7, 15, 2, 0, 0)
   }
 ]
