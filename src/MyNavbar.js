@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
 class MyNavbar extends Component{
@@ -12,12 +13,15 @@ class MyNavbar extends Component{
                   </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                  <NavItem eventKey={1} href="/calendar">
-                    Calendar
-                  </NavItem>
-                  <NavItem eventKey={2} href="/filter">
-                    Filter
-                  </NavItem>
+                  <Navbar.Text>
+                    <Link to="/calendar">Calendar</Link>&nbsp;
+                  </Navbar.Text>
+                  <Navbar.Text>
+                    <Link to="/Action">Action</Link>&nbsp;
+                  </Navbar.Text>
+                  <Navbar.Text>
+                    <Link to="/filter">Filter</Link>&nbsp;
+                  </Navbar.Text>
                 </Nav>
               </Navbar>
             </div>

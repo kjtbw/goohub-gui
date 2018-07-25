@@ -16,9 +16,9 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 
 const App = () => (
    	<div>
-      <MyNavbar/>
 	  <Router>
 		<div>
+          <MyNavbar/>
 		  <Route path="/" component={Home}/>
 		  <Route path="/filter" component={PageOfFilter}/>
           <Route path="/calendar" component={PageOfCalendar}/>
