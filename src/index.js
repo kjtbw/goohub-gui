@@ -1,33 +1,35 @@
+// modules
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import './index.css';
+import registerServiceWorker from './registerServiceWorker';
+// my modules
 import Home from './Home';
 import PageOfFilter from './PageOfFilter';
 import PageOfAction from './PageOfAction';
-import PageOfCorrespondenceTable from './PageOfCorrespondenceTable';
-import registerServiceWorker from './registerServiceWorker';
+import PageOfCalendar from './PageOfCalendar';
+import MyNavbar from './MyNavbar';
+// css
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 const App = () => (
-	<div>
+   	<div>
+      <MyNavbar/>
 	  <Router>
 		<div>
-		  <Link to="/">Home</Link>&nbsp;
-		  <Link to="/filter">Filter</Link>&nbsp;
-          <Link to="/action">Action</Link>&nbsp;
-          <Link to="/correspondenceTable">CorrespondenceTable</Link>&nbsp;
-
 		  <Route path="/" component={Home}/>
 		  <Route path="/filter" component={PageOfFilter}/>
+          <Route path="/calendar" component={PageOfCalendar}/>
           <Route path="/action" component={PageOfAction}/>
-		  <Route path="/correspondenceTable" component={PageOfCorrespondenceTable}/>
 		</div>
 	  </Router>
-	</div>
+    </div>
 )
 
 ReactDOM.render(
-		<App />, document.getElementById('root')
+    <App />, document.getElementById('root')
 )
 
 registerServiceWorker();
