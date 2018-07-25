@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
-import FilterCollection from './FilterCollection';
 import PullDown from './PullDown';
 import TextBox from './TextBox';
-import SubmitButton from './SubmitButton';
-import List from './List';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {Button, Grid, Row, Col} from 'react-bootstrap';
 
 class PageOfFilter extends Component{
 	constructor() {
 		super();
-		var fc = new FilterCollection();
-        var f_names = fc.values("name");
-		var methods = fc.methods();
+		var methods = [
+            "",
+            "含む",
+            "置換する",
+            "以前である",
+            "以降である",
+            "隠す"
+        ];
 		var columns = [
-			"summary",
-			"dtstart",
-			"dtend",
-			"location",
-			"attendee",
-			"description",
-			"rrule",
-            "*"
+            "",
+			"予定名",
+			"開始日時",
+			"終了日時",
+			"場所",
+			"参加者",
+			"説明",
 		];
 		this.state = {
-            f_names: f_names,
 			methods: methods,
 			condition_method: methods[0],
 			columns: columns,
@@ -39,7 +40,6 @@ class PageOfFilter extends Component{
 		this.handleMM = this.handleMM.bind(this);
 		this.handleMC = this.handleMC.bind(this);
 		this.handleMA = this.handleMA.bind(this);
-        this.handleNameChange = this.handleNameChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -50,68 +50,53 @@ class PageOfFilter extends Component{
 	handleMC(event){this.setState({modifier_column: event.target.value});}
 	handleMA(event){this.setState({modifier_arg: event.target.value});}
 
-	handleNameChange(event){
-		this.setState({
-			name: event.target.value
-		});
-	}
-
-
-       handleSubmit(event) {
-        alert('Filter:\nname: ' + this.state.name +
-              '\ncondition_method:'  + this.state.condition_method +
-			  '\ncondition_column: ' + this.state.condition_column +
-			  '\ncondition_arg: ' + this.state.condition_arg +
-			  '\nmodifier_method:' + this.state.modifier_method +
-			  '\nmodifier_column: ' + this.state.modifier_column +
-			  '\nmodifier_arg: ' + this.state.modifier_arg
+    handleSubmit(event) {
+        alert('フィルタを作成しました\n' +
+              '適用条件:\n'  +
+              '\t項目: ' + this.state.condition_column + '\n' +
+			  '\t引数: ' + this.state.condition_arg  + '\n' +
+			  '\t処理: ' + this.state.condition_method + '\n' +
+			  '編集方法:\n' +
+              '\t項目: '+ this.state.modifier_column + '\n' +
+			  '\t引数: ' + this.state.modifier_arg + '\n' +
+			  '\t処理: ' + this.state.modifier_method
 			 );
-           this.state.f_names.push(this.state.name);
-           this.setState(this.state);
-           event.preventDefault();
+        this.setState(this.state);
+        event.preventDefault();
     }
 
 	render(){
 		return(
 			<div>
-              name
-              <TextBox handleTextChange = {this.handleNameChange}/>
-              <p/>
-			  condition
-			  <br/>
-			  method
-			  <br/>
-			  <PullDown data = {this.state.methods} handleChange = {this.handleCM}/>
-			  <br/>
-			  column
-			  <br/>
-			  <PullDown data = {this.state.columns} handleChange = {this.handleCC}/>
-			  <br/>
-			  arg
-			  <br/>
-			  <TextBox handleTextChange = {this.handleCA}/>
+              <Grid>
+                <h1>Filter</h1>
+                <br/>
+                <h4>適用条件</h4>
+                項目: <PullDown data = {this.state.columns} handleChange = {this.handleCC}/>
+                <br/>
+                引数: <TextBox handleTextChange = {this.handleCA}/>(例: 会議，出張，17)
+                <br/>
+                処理: <PullDown data = {this.state.methods} handleChange = {this.handleCM}/>
+			    <p/>
 
-			  <p/>
-			  modifier
-			  method
-			  <br/>
-			  <PullDown data = {this.state.methods} handleChange = {this.handleMM}/>
-			  <br/>
-			  column
-			  <br/>
-			  <PullDown data = {this.state.columns} handleChange = {this.handleMC}/>
-			  <br/>
-			  arg
-			  <br/>
-			  <TextBox handleTextChange = {this.handleMA}/>
+                <br/>
+			    <h4>編集方法</h4>
+			    項目: <PullDown data = {this.state.columns} handleChange = {this.handleMC}/>
+                <br/>
+			    引数: <TextBox handleTextChange = {this.handleMA}/>(例: 仕事，17)
+                <br/>
+                処理: <PullDown data = {this.state.methods} handleChange = {this.handleMM}/>
+			    <p/>
 
-			  <p/>
-			  <SubmitButton handleSubmit = {this.handleSubmit}/>
-              <p/>
-              filters
-              <br/>
-              <List data = {this.state.f_names}/>
-              <Link to="/action">アクションを設定する</Link>&nbsp;
+                <br/>
+                <Button bsStyle="success" onClick = {this.handleSubmit}>フィルタを作成</Button>
+                <p/>
+
+                <br/>
+                <h4>
+                  <Link to="/action">アクションを作成する</Link>&nbsp;
+                </h4>
+              </Grid>
 			</div>
 		);
 	}

@@ -7,7 +7,6 @@ const PullDown =(props)=> {
 
 	return (
 		<label>
-		  Pick any column:
 		  <select  onChange={props.handleChange}>
 			{items}
 		  </select>
