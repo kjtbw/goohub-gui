@@ -63,6 +63,59 @@ class PageOfCalendar extends Component{
                 step={60}
                 views={allViews}
                 defaultDate={new Date(2018, 7, 24)}
+                eventPropGetter={
+                    (event, start, end, isSelected) => {
+                        if (event["tag"] == "lecture"){
+                            let lecture = {
+                                backgroundColor: "lightblue",
+                                color: 'black',
+                                borderRadius: "0px",
+                                border: "none"
+                            };
+                            return {
+                                className: "",
+                                style: lecture
+                            };
+                        }else{
+                            if (event["tag"] == "office"){
+                                let office = {
+                                    backgroundColor: "lightgreen",
+                                    color: 'black',
+                                    borderRadius: "0px",
+                                    border: "none"
+                                };
+                                return {
+                                    className: "",
+                                    style: office
+                                };
+                            }else{
+                                if (event["tag"] == "personal"){
+                                    let personal = {
+                                        backgroundColor: "lightpink",
+                                        color: 'black',
+                                        borderRadius: "0px",
+                                        border: "none"
+                                    };
+                                    return {
+                                        className: "",
+                                        style: personal
+                                    };
+                                }else {
+                                    let others = {
+                                        backgroundColor: "lightgrey",
+                                        color: 'black',
+                                        borderRadius: "0px",
+                                        border: "none"
+                                    };
+                                    return {
+                                        className: "",
+                                        style: others
+                                    };
+                                }
+                            }
+                        }
+                    }
+                }
                 />
             </div>
         );
