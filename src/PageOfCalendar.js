@@ -13,16 +13,33 @@ const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 
 class PageOfCalendar extends Component{
     render(){
-        // filter1なら，会議を仕事で置換
         if (this.props.match.params.id){
-            if (this.props.match.params.id.includes("filter1"))
+            // filter2なら，会議を仕事で置換
+            if (this.props.match.params.id.includes("filter2")){
                 events.map(e =>{
                     if(e["title"].includes("会議"))
                         e["title"] = "仕事";
                 });
-        };
-
-		return(
+            }
+            // filter3なら，出張を仕事で置換
+            if (this.props.match.params.id.includes("filter3")){
+                events.map(e =>{
+                    if(e["title"].includes("出張"))
+                        e["title"] = "仕事";
+                });
+            }
+            // filter1なら，17時以降の予定を削除(nullにするので，一番最後)
+            if (this.props.match.params.id.includes("filter1")){
+                events.map(e =>{
+                    if(e["start"].getHours() > 17){
+                        e["title"] = null;
+                        e["start"] = null;
+                        e["end"] = null;
+                    }
+                });
+            }
+        }
+        return(
             <div style={{height: 625}}>
               <Grid>
                 <Row>
