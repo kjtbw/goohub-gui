@@ -1,7 +1,7 @@
 // modules
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 // my modules
 import Home from './Home';
@@ -14,6 +14,7 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
+// Switchは前から検索するため，条件がきびしいものを先にかくこと
 const App = () => (
    	<div>
 	  <Router>
@@ -21,8 +22,14 @@ const App = () => (
           <MyNavbar/>
 		  <Route path="/" component={Home}/>
 		  <Route path="/filter" component={PageOfFilter}/>
-          <Route path="/calendar" component={PageOfCalendar}/>
-          <Route path="/action" component={PageOfAction}/>
+          <Switch>
+            <Route path="/calendar/:id" component={PageOfCalendar}/>
+            <Route path="/calendar" component={PageOfCalendar}/>
+          </Switch>
+          <Switch>
+            <Route path="/action/:id" component={PageOfAction}/>
+            <Route path="/action" component={PageOfAction}/>
+          </Switch>
 		</div>
 	  </Router>
     </div>

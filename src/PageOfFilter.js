@@ -115,7 +115,7 @@ class PageOfFilter extends Component{
 
                 <br/>
                 <h4>
-                  <Link to="/action">アクションを作成する</Link>&nbsp;
+                  <Link to={"/action/" + this.state.f_names}>アクションを作成する</Link>&nbsp;
                 </h4>
               </Grid>
 			</div>

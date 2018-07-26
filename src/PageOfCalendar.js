@@ -6,13 +6,22 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Grid, Row, Col} from 'react-bootstrap';
 
-moment.locale('ja-JP');
+moment.locale('ja');
 BigCalendar.momentLocalizer(moment);
 
 const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 
 class PageOfCalendar extends Component{
     render(){
+        // filter1なら，会議を仕事で置換
+        if (this.props.match.params.id){
+            if (this.props.match.params.id.includes("filter1"))
+                events.map(e =>{
+                    if(e["title"].includes("会議"))
+                        e["title"] = "仕事";
+                });
+        };
+
 		return(
             <div style={{height: 625}}>
               <Grid>
