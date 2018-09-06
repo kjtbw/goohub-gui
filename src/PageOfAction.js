@@ -61,7 +61,11 @@ class PageOfAction extends Component{
 
                 <br/>
                 <h4>
-                  <Link to={"/calendar/" + this.props.match.params.id}>カレンダへ戻る</Link>
+                  <Link to={"/calendar/" + this.props.match.params.id}>
+                    <Button>
+                      カレンダへ戻る
+                    </Button>
+                  </Link>
                 </h4>
               </Grid>
 			</div>

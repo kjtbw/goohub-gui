@@ -181,17 +181,21 @@ class PageOfFilter extends Component{
 			    <p/>
 
                 <br/>
+                <Button bsStyle="success" onClick = {this.handleSubmit}>フィルタを作成</Button>
+                <p/>
+
+                <br/>
                 <h4>作成したフィルタ</h4>
                 <br/>
                 <List data = {this.state.f_names}/>
 
                 <br/>
-                <Button bsStyle="success" onClick = {this.handleSubmit}>フィルタを作成</Button>
-                <p/>
-
-                <br/>
                 <h4>
-                  <Link to={"/action/" + this.state.f_names}>アクションを作成する</Link>&nbsp;
+                  <Link to={"/action/" + this.state.f_names}>
+                    <Button>
+                      アクションを作成する
+                    </Button>
+                  </Link>&nbsp;
                 </h4>
               </Grid>
 			</div>
