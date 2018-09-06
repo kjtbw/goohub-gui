@@ -38,7 +38,7 @@ export default [
         'tag': 'lecture'
     },
     {
-        'title': '定例会議',
+        'title': '会議(入試の問題)',
         'start': new Date(2018, 7, 6, 10, 30, 0, 0),
         'end': new Date(2018, 7, 6, 12, 30, 0, 0),
         desc: 'Pre-meeting meeting, to prepare for the meeting',
@@ -52,7 +52,7 @@ export default [
         'tag': 'personal'
     },
     {
-        'title': '定例会議',
+        'title': '会議(講義の成績)',
         'start': new Date(2018, 7, 23, 14, 0, 0, 0),
         'end': new Date(2018, 7, 23, 15, 0, 0, 0),
         'tag': 'office'
