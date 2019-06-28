@@ -191,9 +191,9 @@ class PageOfFilter extends Component{
 
                 <br/>
                 <h4>
-                  <Link to={"/action/" + this.state.f_names}>
+                  <Link to={"/calendar/" + this.state.f_names}>
                     <Button>
-                      アクションを作成する
+                      カレンダへ戻る
                     </Button>
                   </Link>&nbsp;
                 </h4>

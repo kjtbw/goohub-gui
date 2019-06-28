@@ -41,7 +41,7 @@ export default [
         'title': '会議(入試の問題)',
         'start': new Date(2018, 7, 6, 10, 30, 0, 0),
         'end': new Date(2018, 7, 6, 12, 30, 0, 0),
-        desc: 'Pre-meeting meeting, to prepare for the meeting',
+        'desc': '問題構成について岡山先生に質問',
         'tag': 'office'
     },
     {
@@ -55,6 +55,7 @@ export default [
         'title': '会議(講義の成績)',
         'start': new Date(2018, 7, 23, 14, 0, 0, 0),
         'end': new Date(2018, 7, 23, 15, 0, 0, 0),
+        'desc': 'B2の成績について議論',
         'tag': 'office'
     },
     {
