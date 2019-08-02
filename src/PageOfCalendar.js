@@ -14,18 +14,16 @@ const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 class PageOfCalendar extends Component{
     constructor(){
         super();
-        //        var raw_data = JSON.parse(JSON.stringify(data));
-        //      console.log(raw_data)
-
-        var data = require('your_json_data_path')
+        var data = require('./db/nomura.laboratory@gmail.com-2019-6.json')
         var events = [];
         for(var i = 0; i < data.items.length; i++) {
             var e = data.items[i];
-            console.log(e);
+            var start_date = (e.start.date_time) ? e.start.date_time : e.start.date;
+            var end_date = (e.end.date_time) ? e.end.date_time : e.end.date;
             e = {
                 'title': e.summary,
-                'start': new Date(e.start.date_time),
-                'end': new Date(e.end.date_time),
+                'start': new Date(start_date),
+                'end': new Date(end_date),
                 'tag': 'office'
             };
             events.push(e);
@@ -37,6 +35,7 @@ class PageOfCalendar extends Component{
         };
     }
     render(){
+        console.log(this.props.match.params.id);
         if (this.props.match.params.id == null){
             this.props.match.params.id = "undefined";
         }
@@ -76,7 +75,7 @@ class PageOfCalendar extends Component{
               <Grid>
                 <Row>
                   <Col xs={16} md={12}>
-                    <h1>山本先生のカレンダ{this.state.filter}</h1>
+                    <h1>Calendar{this.state.filter}</h1>
                   </Col>
                 </Row>
 
@@ -84,7 +83,7 @@ class PageOfCalendar extends Component{
                   <Col xs={6} md={4}>
                     <div align="left">
                       <h4>
-                        <Link to="/filter">
+                        <Link to="/make/filter">
                           <Button>
                             新しいフィルタを作成
                           </Button>
@@ -97,11 +96,13 @@ class PageOfCalendar extends Component{
                   <Col xs={6} md={4}>
                     <div align="left">
                       <h4>
-                        <Link to={"/action/" + this.props.match.params.id}>
-                          <Button>
-                            新しいアクションを作成
-                          </Button>
-                        </Link>&nbsp;
+                        {/*
+                            <Link to={"/action/" + this.props.match.params.id}>
+                                  <Button>
+                                        新しいアクションを作成
+                                        </Button>
+                                        </Link>&nbsp;
+                            */}
                       </h4>
                     </div>
                   </Col>
