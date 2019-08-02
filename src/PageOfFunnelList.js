@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ObjectList from './ObjectList';
-import { BrowserRouter as  Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Button, Grid} from 'react-bootstrap';
 
 class PageOfFunnelList extends Component{
@@ -10,7 +10,6 @@ class PageOfFunnelList extends Component{
         var filters = require('./db/filters.json');
         var actions = require('./db/actions.json');
         var outlets = require('./db/outlets.json');
-
         var rule_list = [];
         for(let k in funnels){
             const filter = filters.find((filter) => {
@@ -30,19 +29,80 @@ class PageOfFunnelList extends Component{
             };
             rule_list.push(rule);
         }
-
-		this.state = {
+        this.state = {
             // funnels: funnels,
             // filters: filters,
             // actions: actions,
             // outlets: outlets,
             rule_list: rule_list,
-		};
-	}
+        };
 
-	render(){
-		return(
-			<div>
+
+        // this.state = {
+        //     funnels: "",
+        //     filters: "",
+        //     actions: "",
+        //     outlets: "",
+        //     rule_list: [],
+        // };
+    }
+
+    // json-serverから読む処理
+    //     componentDidMount(){
+    //         //var funnels = "";
+    //         fetch("http://localhost:4000/funnels")
+    //             .then( response => response.json() )
+    //             .then( json =>  {this.setState({ funnels: json });
+    //                             });
+    //         fetch("http://localhost:4000/filters")
+    //             .then( response => response.json() )
+    //             .then( json =>  {this.setState({ filters: json });
+    //                             });
+    //         fetch("http://localhost:4000/actions")
+    //             .then( response => response.json() )
+    //             .then( json =>  {this.setState({ actions: json });
+    //                             });
+    //         // データの取得には，数~数十msecかかるので，取得処理の最後に処理を書く，この外に書くと，データ取得前に処理を実行しようとするので，""を処理しようとする
+    //         fetch("http://localhost:4000/outlets")
+    // q            .then( response => response.json() )
+    //             .then( json =>  {this.setState({ outlets: json });
+    //                              console.log(this.state.funnels);
+    //                              var rule_list = [];
+    //                              for(let k in this.state.funnels){
+    //                                  const filter = this.state.filters.find((filter) => {
+    //                                      return (filter.name === this.state.funnels[k].filter_name);
+    //                                  });
+    //                                  const action = this.state.actions.find((action) => {
+    //                                      return (action.name === this.state.funnels[k].action_name);
+    //                                  });
+    //                                  const outlet = this.state.outlets.find((outlet) => {
+    //                                      return (outlet.name === this.state.funnels[k].outlet_name);
+    //                                  });
+    //                                  var rule = {
+    //                                      name: this.state.funnels[k].name,
+    //                                      filter: filter,
+    //                                      action: action,
+    //                                      outlet: outlet
+    //                                  };
+    //                                  rule_list.push(rule);
+    //                              }
+    //                              this.setState({rule_list: rule_list});
+    //                             });
+
+    //         fetch("http://localhost:4000/funnels", {
+    //             method: "POST",
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ id: 2,
+    //                                    name: "testtest"})
+    //         })
+    //     }
+
+    render(){
+	    return(
+		    <div>
               <Grid>
                 {/* 案1の構成だと，既存のフィルタを管理する必要がないので，この辺の情報はいらない
                     FunnelList
@@ -84,8 +144,8 @@ class PageOfFunnelList extends Component{
                 </Link>&nbsp;
             </Grid>
 			    </div>
-		);
-	}
+	    );
+    }
 }
 
 export default PageOfFunnelList;
