@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PullDown from './PullDown';
 import TextBox from './TextBox';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {Button, Grid} from 'react-bootstrap';
 
 class PageOfMakeOutlet extends Component{
