@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ObjectList from './ObjectList';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Funnel from './Funnel';
+import CardColumns from 'react-bootstrap/CardColumns'
 
 class PageOfFunnelList extends Component{
 	constructor() {
@@ -29,6 +31,7 @@ class PageOfFunnelList extends Component{
             };
             rule_list.push(rule);
         }
+
         this.state = {
             // funnels: funnels,
             // filters: filters,
@@ -101,47 +104,35 @@ class PageOfFunnelList extends Component{
     //     }
 
     render(){
+        var rule = {
+            name: "hoge",
+            filter: {
+                name: this.props.location.state.f_name,
+                modifier: this.props.location.state.filter_dsl
+            },
+            action: {
+                name: this.props.location.state.a_name,
+                condition: this.props.location.state.action_dsl
+            },
+            outlet: {
+                name: this.props.location.state.o_name,
+                informant: this.props.location.state.outlet_dsl
+            }
+        };
 	    return(
 		    <div>
-                {/* 案1の構成だと，既存のフィルタを管理する必要がないので，この辺の情報はいらない
-                    FunnelList
-                    <br/>
-                        <ArrayObjectList data = {this.state.funnels}/>
-                            FilterList
-                            <br/>
-                                <ArrayObjectList data = {this.state.filters}/>
-                                    ActionList
-                                    <br/>
-                                        <ArrayObjectList data = {this.state.actions}/>
-                                            OutletList
-                                            <br/>
-                                                <ArrayObjectList data = {this.state.outlets}/>
-                                                */}
-                                                Your Rule
-                                                <p/>
-                                                filter: {this.props.location.state.filter_dsl}<br/>
-                                                action: {this.props.location.state.action_dsl}<br/>
-                                                outlet: {this.props.location.state.outlet_dsl}
-                                                <p/>
-
-                                                RuleList
-                                                <br/>
-                                                <ol>
-                                                  {this.state.rule_list.map((rule) => (
-                                                      <li>
-                                                        {rule.name}:<br/>
-                                                        filter:<ObjectList data = {rule.filter}/>
-                                                        action:<ObjectList data = {rule.action}/>
-                                                        outlet:<ObjectList data = {rule.outlet}/>
-                                                      </li>
-                                                  ))}
-            </ol>
+              <h4>RuleList</h4>
+              <p/>
+              <CardColumns>
+                <Funnel rule={rule}/>
+                {this.state.rule_list.map((rule,i) => (<Funnel rule={rule}/>))}
+            </CardColumns>
                 <Link to="/calendar/">
                 <Button>
                 カレンダへ戻る
             </Button>
                 </Link>&nbsp;
-			    </div>
+		    </div>
 	    );
     }
 }

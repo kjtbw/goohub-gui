@@ -18,6 +18,7 @@ import PageOfMakeOutlet from './PageOfMakeOutlet';
 // css
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-toggle/style.css"
 
 // Switchは前から検索するため，条件がきびしいものを先にかくこと
 
