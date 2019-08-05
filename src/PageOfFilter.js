@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PullDown from './PullDown';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Button, Grid, Row, Col} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col  from 'react-bootstrap/Col';
 import List from './List';
 
 class PageOfFilter extends Component{
@@ -78,7 +80,6 @@ class PageOfFilter extends Component{
 	render(){
 		return(
 			<div>
-              <Grid>
                 <h1>Filter</h1>
                 <br/>
                 フィルタ名: <TextBox handleTextChange = {this.handleNameChange}/>
@@ -197,7 +198,6 @@ class PageOfFilter extends Component{
                     </Button>
                   </Link>&nbsp;
                 </h4>
-              </Grid>
 			</div>
 		);
 	}

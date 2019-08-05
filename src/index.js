@@ -17,8 +17,7 @@ import PageOfMakeOutlet from './PageOfMakeOutlet';
 
 // css
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Switchは前から検索するため，条件がきびしいものを先にかくこと
 

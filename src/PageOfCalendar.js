@@ -4,7 +4,9 @@ import moment from 'moment';
 //import events from './events';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Grid, Row, Col, Button} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col  from 'react-bootstrap/Col';
 
 moment.locale('ja');
 BigCalendar.momentLocalizer(moment);
@@ -72,7 +74,6 @@ class PageOfCalendar extends Component{
 
         return(
             <div style={{height: 625}}>
-              <Grid>
                 <Row>
                   <Col xs={16} md={12}>
                     <h1>Calendar{this.state.filter}</h1>
@@ -107,7 +108,6 @@ class PageOfCalendar extends Component{
                     </div>
                   </Col>
                 </Row>
-              </Grid>
               <p/>
               <BigCalendar
                 // if you want to set onclick event, use this code

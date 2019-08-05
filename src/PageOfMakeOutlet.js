@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PullDown from './PullDown';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Button, Grid} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 class PageOfMakeOutlet extends Component{
 	constructor() {
@@ -50,7 +50,6 @@ class PageOfMakeOutlet extends Component{
 	render(){
 		return(
 			<div>
-              <Grid>
                 <h1>Outlet</h1>
                 <br/>
                 フィルタ名: {this.props.location.state.f_name}
@@ -84,7 +83,6 @@ class PageOfMakeOutlet extends Component{
 
                   <button onClick={this.handleNext}> ルールの一覧へ</button>
                 </h4>
-              </Grid>
 			</div>
 		);
 	}

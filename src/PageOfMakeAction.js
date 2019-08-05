@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Button, Grid} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 class PageOfMakeAction extends Component{
 	constructor() {
@@ -30,7 +30,6 @@ class PageOfMakeAction extends Component{
 	render(){
 		return(
 			<div>
-              <Grid>
                 <h1>Action</h1>
                 <br/>
                 フィルタ名: {this.props.location.state.f_name}
@@ -58,7 +57,6 @@ class PageOfMakeAction extends Component{
 
                   <button onClick={this.handleNext}>共有先の設定へ</button>
                 </h4>
-              </Grid>
 			</div>
 		);
 	}

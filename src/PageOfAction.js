@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PullDown from './PullDown';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Button, Grid, Row, Col} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col  from 'react-bootstrap/Col';
 
 class PageOfAction extends Component{
 	constructor() {
@@ -47,7 +49,6 @@ class PageOfAction extends Component{
 	render(){
 		return(
 			<div>
-              <Grid>
                 <h1>Action</h1>
                 <br/>
 			    共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleActionChange}/>
@@ -67,7 +68,6 @@ class PageOfAction extends Component{
                     </Button>
                   </Link>
                 </h4>
-              </Grid>
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Button, Grid} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 class PageOfMakeFilter extends Component{
 	constructor() {
@@ -39,7 +39,6 @@ class PageOfMakeFilter extends Component{
 	render(){
 		return(
 			<div>
-              <Grid>
                 <h1>Filter</h1>
                 <h4>適用条件</h4>
                 <br/>
@@ -67,7 +66,6 @@ class PageOfMakeFilter extends Component{
 
                   <button onClick={this.handleNext}>アクションの設定へ</button>
                 </h4>
-              </Grid>
 			</div>
 		);
 	}

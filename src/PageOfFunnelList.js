@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ObjectList from './ObjectList';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Button, Grid} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 class PageOfFunnelList extends Component{
 	constructor() {
@@ -103,7 +103,6 @@ class PageOfFunnelList extends Component{
     render(){
 	    return(
 		    <div>
-              <Grid>
                 {/* 案1の構成だと，既存のフィルタを管理する必要がないので，この辺の情報はいらない
                     FunnelList
                     <br/>
@@ -142,7 +141,6 @@ class PageOfFunnelList extends Component{
                 カレンダへ戻る
             </Button>
                 </Link>&nbsp;
-            </Grid>
 			    </div>
 	    );
     }
