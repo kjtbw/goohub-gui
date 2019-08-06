@@ -29,10 +29,12 @@ class PageOfMakeOutlet extends Component{
 	}
 
     handleNext(){
+        var outlet_dsl = "";
         if((this.state.opponent === "Google Calendar") | (this.state.opponent === "Mail")){
-            this.setState({outlet_dsl: this.state.opponent + " : " + this.state.address});}
+            outlet_dsl = this.state.opponent + " : " + this.state.address}
         if(this.state.opponent === "Slack"){
-            this.setState({outlet_dsl: this.state.opponent});}
+            outlet_dsl = this.state.opponent
+        }
 
         this.props.history.push({
             pathname: "/list",
@@ -41,7 +43,7 @@ class PageOfMakeOutlet extends Component{
                     a_name: this.props.location.state.f_name,
                     action_dsl: this.props.location.state.action_dsl,
                     o_name: this.state.name,
-                    outlet_dsl: this.state.outlet_dsl
+                    outlet_dsl: outlet_dsl
                    },});}
 
     handleNameChange(event){this.setState({name: event.target.value});}
