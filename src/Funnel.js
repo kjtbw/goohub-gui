@@ -5,12 +5,13 @@ import Toggle from 'react-toggle'
 import ObjectList from './ObjectList';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Funnel extends Component {
     render () {
-        console.log(this.props)
         return (
-            <Card style={{ width: '25rem' }}>
+            <Card>
               <Card.Body>
                 <Card.Title>{this.props.rule.name}</Card.Title>
                 <ListGroup variant="flush">
@@ -29,7 +30,7 @@ class Funnel extends Component {
                 </ListGroup>
                 <Row>
                   <Col><Toggle onChange={this.handleSwitch} /></Col>
-                  <Col><Card.Link href="#">Settings</Card.Link></Col>
+                  <Col><Link to={"/settings/" + this.props.rule.name}><Button>Settings</Button></Link></Col>
                 </Row>
               </Card.Body>
             </Card>

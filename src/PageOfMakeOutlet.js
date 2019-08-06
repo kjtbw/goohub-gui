@@ -3,6 +3,7 @@ import PullDown from './PullDown';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Container  from 'react-bootstrap/Container';
 
 class PageOfMakeOutlet extends Component{
 	constructor() {
@@ -50,8 +51,15 @@ class PageOfMakeOutlet extends Component{
 	render(){
 		return(
 			<div>
+              <Container>
                 <h1>Outlet</h1>
-                <br/>
+                <h4>共有先</h4>
+                アウトレット名: <TextBox handleTextChange = {this.handleNameChange}/>
+                <p/>
+                共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleOpponentChange}/>
+			    <p/>
+			    引数: <TextBox handleTextChange = {this.handleAddressChange}/>(例: メールアドレス，カレンダID)
+			    <p/>
                 フィルタ名: {this.props.location.state.f_name}
                 <p/>
                 適用条件: {this.props.location.state.filter_dsl}
@@ -60,16 +68,8 @@ class PageOfMakeOutlet extends Component{
                 <p/>
                 編集方法: {this.props.location.state.action_dsl}
 
-                <h4>共有先</h4>
-                アウトレット名: <TextBox handleTextChange = {this.handleNameChange}/>
-                <p/>
-                共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleOpponentChange}/>
-			    <p/>
-			    引数: <TextBox handleTextChange = {this.handleAddressChange}/>(例: メールアドレス，カレンダID)
-			    <p/>
-
                 <h4>
-                  <Link to="/calendar/">
+                  <Link to={"/calendar/"}>
                     <Button>
                       カレンダへ戻る
                     </Button>
@@ -80,9 +80,12 @@ class PageOfMakeOutlet extends Component{
                       アクションの作成へ
                     </Button>
                   </Link>&nbsp;
+                  <Button onClick={this.handleNext}>
+                    ルールの一覧へ
+                  </Button>
 
-                  <button onClick={this.handleNext}> ルールの一覧へ</button>
                 </h4>
+              </Container>
 			</div>
 		);
 	}

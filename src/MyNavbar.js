@@ -12,6 +12,7 @@ class MyNavbar extends Component{
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="mr-auto">
                     <Nav.Link href="/calendar">calendar</Nav.Link>
+                    <Nav.Link href="/list">list</Nav.Link>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>

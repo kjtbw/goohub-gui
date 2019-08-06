@@ -86,7 +86,7 @@ class PageOfCalendar extends Component{
                       <h4>
                         <Link to="/make/filter">
                           <Button>
-                            新しいフィルタを作成
+                            新しいルールを作成
                           </Button>
                         </Link>&nbsp;
                       </h4>

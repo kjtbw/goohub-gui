@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Container  from 'react-bootstrap/Container';
 
 class PageOfMakeAction extends Component{
 	constructor() {
@@ -30,17 +31,18 @@ class PageOfMakeAction extends Component{
 	render(){
 		return(
 			<div>
+              <Container>
                 <h1>Action</h1>
-                <br/>
-                フィルタ名: {this.props.location.state.f_name}
-                <p/>
-                適用条件: {this.props.location.state.filter_dsl}
-
                 <h4>編集方法</h4>
                 アクション名: <TextBox handleTextChange = {this.handleNameChange}/>
                 <br/>
                 編集方法: <TextBox handleTextChange = {this.handleM}/>
                 <p/>
+
+                <br/>
+                フィルタ名: {this.props.location.state.f_name}
+                <p/>
+                適用条件: {this.props.location.state.filter_dsl}
 
                 <h4>
                   <Link to="/calendar/">
@@ -55,8 +57,11 @@ class PageOfMakeAction extends Component{
                     </Button>
                   </Link>&nbsp;
 
-                  <button onClick={this.handleNext}>共有先の設定へ</button>
+                  <Button onClick={this.handleNext}>
+                    共有先の設定へ
+                  </Button>
                 </h4>
+              </Container>
 			</div>
 		);
 	}

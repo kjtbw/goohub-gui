@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Container  from 'react-bootstrap/Container';
 
 class PageOfMakeFilter extends Component{
 	constructor() {
@@ -39,6 +40,7 @@ class PageOfMakeFilter extends Component{
 	render(){
 		return(
 			<div>
+              <Container>
                 <h1>Filter</h1>
                 <h4>適用条件</h4>
                 <br/>
@@ -64,8 +66,11 @@ class PageOfMakeFilter extends Component{
                     </Button>
                   </Link>&nbsp;
 
-                  <button onClick={this.handleNext}>アクションの設定へ</button>
+                  <Button onClick={this.handleNext}>
+                    アクションの設定へ
+                  </Button>
                 </h4>
+              </Container>
 			</div>
 		);
 	}
