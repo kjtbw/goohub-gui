@@ -13,6 +13,7 @@ import PageOfFunnelList from './PageOfFunnelList';
 import PageOfMakeFilter from './PageOfMakeFilter';
 import PageOfMakeAction from './PageOfMakeAction';
 import PageOfMakeOutlet from './PageOfMakeOutlet';
+import PageOfMakeRuleName from './PageOfMakeRuleName';
 
 
 // css
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/list" component={PageOfFunnelList}/>
           </Switch>
           <Switch>
+            <Route path="/make/rule_name" component={PageOfMakeRuleName}/>
             <Route path="/make/filter" component={PageOfMakeFilter}/>
             <Route path="/make/action" component={PageOfMakeAction}/>
             <Route path="/make/outlet" component={PageOfMakeOutlet}/>

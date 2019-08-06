@@ -22,7 +22,8 @@ class PageOfMakeAction extends Component{
     handleNext(){
         this.props.history.push({
             pathname: "/make/outlet",
-            state: { f_name: this.props.location.state.f_name,
+            state: { name: this.props.location.state.name,
+                     f_name: this.props.location.state.f_name,
                      filter_dsl: this.props.location.state.filter_dsl,
                      a_name: this.state.name,
                      action_dsl: this.state.action_dsl
@@ -39,10 +40,12 @@ class PageOfMakeAction extends Component{
                 編集方法: <TextBox handleTextChange = {this.handleM}/>
                 <p/>
 
+                ルール名: {this.props.location.state.name}
                 <br/>
                 フィルタ名: {this.props.location.state.f_name}
-                <p/>
+                <br/>
                 適用条件: {this.props.location.state.filter_dsl}
+                <p/>
 
                 <h4>
                   <Link to="/calendar/">

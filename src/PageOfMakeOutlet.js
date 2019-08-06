@@ -39,7 +39,8 @@ class PageOfMakeOutlet extends Component{
 
         this.props.history.push({
             pathname: "/list",
-            state: {f_name: this.props.location.state.f_name,
+            state: {name: this.props.location.state.name,
+                    f_name: this.props.location.state.f_name,
                     filter_dsl: this.props.location.state.filter_dsl,
                     a_name: this.props.location.state.f_name,
                     action_dsl: this.props.location.state.action_dsl,
@@ -50,7 +51,8 @@ class PageOfMakeOutlet extends Component{
     handleBack(){
         this.props.history.push({
             pathname: "/make/action",
-            state: {f_name: this.props.location.state.f_name,
+            state: {name: this.props.location.state.name,
+                    f_name: this.props.location.state.f_name,
                     filter_dsl: this.props.location.state.filter_dsl,
                     a_name: this.props.location.state.f_name,
                     action_dsl: this.props.location.state.action_dsl,
@@ -72,14 +74,17 @@ class PageOfMakeOutlet extends Component{
                 共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleOpponentChange}/>
 			    <p/>
 			    引数: <TextBox handleTextChange = {this.handleAddressChange}/>(例: メールアドレス，カレンダID)
-			    <p/>
+                <p/>
+                ルール名: {this.props.location.state.name}
+			    <br/>
                 フィルタ名: {this.props.location.state.f_name}
-                <p/>
+                <br/>
                 適用条件: {this.props.location.state.filter_dsl}
-                <p/>
+                <br/>
                 アクション名: {this.props.location.state.a_name}
-                <p/>
+                <br/>
                 編集方法: {this.props.location.state.action_dsl}
+                <p/>
 
                 <h4>
                   <Link to={"/calendar/"}>

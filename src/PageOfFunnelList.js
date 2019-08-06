@@ -106,7 +106,7 @@ class PageOfFunnelList extends Component{
     render(){
         if (this.props.location.state){
             var rule = {
-                name: "hoge",
+                name: this.props.location.state.f_name,
                 filter: {
                     name: this.props.location.state.f_name,
                     modifier: this.props.location.state.filter_dsl

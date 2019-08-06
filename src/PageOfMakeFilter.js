@@ -32,7 +32,8 @@ class PageOfMakeFilter extends Component{
     handleNext(){
         this.props.history.push({
             pathname: "/make/action",
-            state: { f_name: this.state.name,
+            state: { name: this.props.location.state.name,
+                     f_name: this.state.name,
                      filter_dsl: this.state.filter_dsl }
         });
     }
@@ -57,6 +58,9 @@ class PageOfMakeFilter extends Component{
                 参加者: <TextBox handleTextChange = {this.handleA}/>
                 <p/>
                 説明: <TextBox handleTextChange = {this.handleD}/>
+
+                <p/>
+                ルール名: {this.props.location.state.name}
                 <p/>
 
                 <h4>
