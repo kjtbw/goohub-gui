@@ -42,7 +42,7 @@ class PageOfMakeOutlet extends Component{
             state: {name: this.props.location.state.name,
                     f_name: this.props.location.state.f_name,
                     filter_dsl: this.props.location.state.filter_dsl,
-                    a_name: this.props.location.state.f_name,
+                    a_name: this.props.location.state.a_name,
                     action_dsl: this.props.location.state.action_dsl,
                     o_name: this.state.name,
                     outlet_dsl: outlet_dsl
