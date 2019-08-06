@@ -23,6 +23,7 @@ class PageOfMakeOutlet extends Component{
             outlet_dsl: "",
 		};
         this.handleNext = this.handleNext.bind(this);
+        this.handleBack = this.handleBack.bind(this);
         this.handleOpponentChange = this.handleOpponentChange.bind(this);
         this.handleAddressChange = this.handleAddressChange.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -45,6 +46,16 @@ class PageOfMakeOutlet extends Component{
                     o_name: this.state.name,
                     outlet_dsl: outlet_dsl
                    },});}
+
+    handleBack(){
+        this.props.history.push({
+            pathname: "/make/action",
+            state: {f_name: this.props.location.state.f_name,
+                    filter_dsl: this.props.location.state.filter_dsl,
+                    a_name: this.props.location.state.f_name,
+                    action_dsl: this.props.location.state.action_dsl,
+                   },});}
+
 
     handleNameChange(event){this.setState({name: event.target.value});}
     handleOpponentChange(event){this.setState({opponent: event.target.value});}
@@ -77,11 +88,10 @@ class PageOfMakeOutlet extends Component{
                     </Button>
                   </Link>&nbsp;
 
-                  <Link to={"/make/action/"}>
-                    <Button>
-                      アクションの作成へ
-                    </Button>
-                  </Link>&nbsp;
+                  <Button onClick={this.handleBack}>
+                    アクションの作成へ
+                  </Button>
+
                   <Button onClick={this.handleNext}>
                     ルールの一覧へ
                   </Button>

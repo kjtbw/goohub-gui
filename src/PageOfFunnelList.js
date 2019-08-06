@@ -104,27 +104,29 @@ class PageOfFunnelList extends Component{
     //     }
 
     render(){
-        var rule = {
-            name: "hoge",
-            filter: {
-                name: this.props.location.state.f_name,
-                modifier: this.props.location.state.filter_dsl
-            },
-            action: {
-                name: this.props.location.state.a_name,
-                condition: this.props.location.state.action_dsl
-            },
-            outlet: {
-                name: this.props.location.state.o_name,
-                informant: this.props.location.state.outlet_dsl
-            }
-        };
+        if (this.props.location.state){
+            var rule = {
+                name: "hoge",
+                filter: {
+                    name: this.props.location.state.f_name,
+                    modifier: this.props.location.state.filter_dsl
+                },
+                action: {
+                    name: this.props.location.state.a_name,
+                    condition: this.props.location.state.action_dsl
+                },
+                outlet: {
+                    name: this.props.location.state.o_name,
+                    informant: this.props.location.state.outlet_dsl
+                }
+            };
+        }
 	    return(
 		    <div>
-              <h4>RuleList</h4>
+              <h1>RuleList</h1>
               <p/>
               <CardColumns>
-                <Funnel rule={rule}/>
+                {rule && <Funnel rule={rule}/>}
                 {this.state.rule_list.map((rule,i) => (<Funnel rule={rule}/>))}
             </CardColumns>
                 <Link to="/calendar/">
