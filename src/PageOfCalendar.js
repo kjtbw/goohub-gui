@@ -16,26 +16,35 @@ const allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
 class PageOfCalendar extends Component{
     constructor(){
         super();
-        var data = require('./db/nomura.laboratory@gmail.com-2019-6.json')
-        var events = [];
-        for(var i = 0; i < data.items.length; i++) {
-            var e = data.items[i];
-            var start_date = (e.start.date_time) ? e.start.date_time : e.start.date;
-            var end_date = (e.end.date_time) ? e.end.date_time : e.end.date;
-            e = {
-                'title': e.summary,
-                'start': new Date(start_date),
-                'end': new Date(end_date),
-                'tag': 'office'
-            };
-            events.push(e);
-        }
-
         this.state = {
             filter:"",
-            events: events
+            events: []
         };
     }
+
+    componentDidMount(){
+        fetch( "http://localhost:4567/calendars/nomura.laboratory/2019-6")
+            .then( response => response.json() )
+            .then( json =>  {
+                var events = [];
+                for(var i = 0; i < json.items.length; i++) {
+                    var e = json.items[i];
+                    var start_date = (e.start.date_time) ? e.start.date_time : e.start.date;
+                    var end_date = (e.end.date_time) ? e.end.date_time : e.end.date;
+                    e = {
+                        'title': e.summary,
+                        'start': new Date(start_date),
+                        'end': new Date(end_date),
+                        'tag': 'office'
+                    };
+                    events.push(e);
+                }
+                this.setState({ events: events });
+            });
+
+
+    }
+
     render(){
         console.log(this.props.match.params.id);
         if (this.props.match.params.id == null){
@@ -74,40 +83,40 @@ class PageOfCalendar extends Component{
 
         return(
             <div style={{height: 625}}>
-                <Row>
-                  <Col xs={16} md={12}>
-                    <h1>Calendar{this.state.filter}</h1>
-                  </Col>
-                </Row>
+              <Row>
+                <Col xs={16} md={12}>
+                  <h1>Calendar{this.state.filter}</h1>
+                </Col>
+              </Row>
 
-                <Row>
-                  <Col xs={6} md={4}>
-                    <div align="left">
-                      <h4>
-                        <Link to="/make/rule_name">
-                          <Button>
-                            新しいルールを作成
-                          </Button>
-                        </Link>&nbsp;
-                      </h4>
-                    </div>
-                  </Col>
+              <Row>
+                <Col xs={6} md={4}>
+                  <div align="left">
+                    <h4>
+                      <Link to="/make/rule_name">
+                        <Button>
+                          新しいルールを作成
+                        </Button>
+                      </Link>&nbsp;
+                    </h4>
+                  </div>
+                </Col>
 
 
-                  <Col xs={6} md={4}>
-                    <div align="left">
-                      <h4>
-                        {/*
-                            <Link to={"/action/" + this.props.match.params.id}>
-                                  <Button>
-                                        新しいアクションを作成
-                                        </Button>
-                                        </Link>&nbsp;
-                            */}
-                      </h4>
-                    </div>
-                  </Col>
-                </Row>
+                <Col xs={6} md={4}>
+                  <div align="left">
+                    <h4>
+                      {/*
+                          <Link to={"/action/" + this.props.match.params.id}>
+                                <Button>
+                                      新しいアクションを作成
+                                      </Button>
+                                      </Link>&nbsp;
+                          */}
+                    </h4>
+                  </div>
+                </Col>
+              </Row>
               <p/>
               <BigCalendar
                 // if you want to set onclick event, use this code
