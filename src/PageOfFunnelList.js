@@ -66,15 +66,6 @@ class PageOfFunnelList extends Component{
                             });
 
         // post処理を書く予定
-        // fetch("http://localhost:4567/funnels", {
-        //     method: "POST",
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ id: 2,
-        //                            name: "testtest"})
-        // })
     }
 
     render(){
@@ -83,11 +74,11 @@ class PageOfFunnelList extends Component{
                 name: this.props.location.state.name,
                 filter: {
                     name: this.props.location.state.f_name,
-                    modifier: this.props.location.state.filter_dsl
+                    condition: this.props.location.state.filter_dsl
                 },
                 action: {
                     name: this.props.location.state.a_name,
-                    condition: this.props.location.state.action_dsl
+                    modifier: this.props.location.state.action_dsl
                 },
                 outlet: {
                     name: this.props.location.state.o_name,
@@ -95,6 +86,16 @@ class PageOfFunnelList extends Component{
                 }
             };
         }
+
+        fetch("http://localhost:4567/funnels", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(rule)
+        })
+
 	    return(
 		    <div>
               <h1>RuleList</h1>
