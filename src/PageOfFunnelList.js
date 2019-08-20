@@ -97,16 +97,17 @@ class PageOfFunnelList extends Component{
                 },
                 status: false
             };
+
+            fetch("http://localhost:4567/funnels", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(rule)
+            })
         }
 
-        fetch("http://localhost:4567/funnels", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(rule)
-        })
 
 	    return(
 		    <div>
