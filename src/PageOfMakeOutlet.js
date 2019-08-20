@@ -10,9 +10,9 @@ class PageOfMakeOutlet extends Component{
 		super();
         var opponents = [
             "",
-            "Google Calendar",
-            "Mail",
-            "Slack"
+            "google_calendar",
+            "mail",
+            "slack"
         ];
 		this.state = {
             address: "",
@@ -30,10 +30,11 @@ class PageOfMakeOutlet extends Component{
 	}
 
     handleNext(){
+
         var outlet_dsl = "";
-        if((this.state.opponent === "Google Calendar") | (this.state.opponent === "Mail")){
+        if((this.state.opponent === "google_calendar") | (this.state.opponent === "mail")){
             outlet_dsl = this.state.opponent + " : " + this.state.address}
-        if(this.state.opponent === "Slack"){
+        if(this.state.opponent === "slack"){
             outlet_dsl = this.state.opponent
         }
 

@@ -60,7 +60,6 @@ class PageOfFunnelList extends Component{
                                  });
                                  var status = false;
                                  this.state.info.exec_funnel.map(v => {
-                                     console.log(v)
                                      if (v == this.state.funnels[k].name){status = true;}
                                  });
 
@@ -80,7 +79,7 @@ class PageOfFunnelList extends Component{
     }
 
     render(){
-        if (this.props.location.state){
+        if (this.props.location.state && this.props.location.state.name != ""){
             var rule = {
                 name: this.props.location.state.name,
                 filter: {
