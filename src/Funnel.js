@@ -60,7 +60,7 @@ class Funnel extends Component {
                 <Row>
                   <Col><Toggle defaultChecked={this.props.rule.status}
                                onChange={this.handleSwitch} /></Col>
-                  <Col><Link to={"/settings/" + this.props.rule.name}><Button>Settings</Button></Link></Col>
+                  <Col><Link to={"/settings/" + this.props.rule.name}><Button variant="outline-success">Settings</Button></Link></Col>
                 </Row>
               </Card.Body>
             </Card>

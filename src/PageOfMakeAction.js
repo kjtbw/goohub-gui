@@ -44,18 +44,18 @@ class PageOfMakeAction extends Component{
 
                 <h4>
                   <Link to="/calendar/">
-                    <Button>
+                    <Button variant="outline-secondary">
                       カレンダへ戻る
-                    </Button>
+                    </Button >
                   </Link>&nbsp;
 
                   <Link to="/make/filter/">
-                    <Button>
+                    <Button variant="outline-secondary">
                       フィルタの作成へ戻る
                     </Button>
                   </Link>&nbsp;
 
-                  <Button onClick={this.handleNext}>
+                  <Button variant="outline-success" onClick={this.handleNext}>
                     共有先の設定へ
                   </Button>
                 </h4>

@@ -32,12 +32,12 @@ class PageOfMakeRuleName extends Component{
 
                 <h4>
                   <Link to="/calendar/">
-                    <Button>
-                      カレンダへ
+                    <Button variant="outline-secondary">
+                      カレンダへ戻る
                     </Button>
                   </Link>&nbsp;
 
-                  <Button onClick={this.handleNext}>
+                  <Button variant="outline-success" onClick={this.handleNext}>
                     適用条件の設定へ
                   </Button>
                 </h4>

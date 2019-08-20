@@ -94,7 +94,7 @@ class PageOfCalendar extends Component{
                   <div align="left">
                     <h4>
                       <Link to="/make/rule_name">
-                        <Button>
+                        <Button variant="outline-success">
                           新しいルールを作成
                         </Button>
                       </Link>&nbsp;

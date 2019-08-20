@@ -83,16 +83,16 @@ class PageOfMakeOutlet extends Component{
 
                 <h4>
                   <Link to={"/calendar/"}>
-                    <Button>
+                    <Button variant="outline-secondary">
                       カレンダへ戻る
                     </Button>
                   </Link>&nbsp;
 
-                  <Button onClick={this.handleBack}>
-                    アクションの作成へ
+                  <Button variant="outline-secondary" onClick={this.handleBack}>
+                    アクションの作成へ戻る
                   </Button>
 
-                  <Button onClick={this.handleNext}>
+                  <Button variant="outline-success" onClick={this.handleNext}>
                     ルールの一覧へ
                   </Button>
 

@@ -117,7 +117,7 @@ class PageOfFunnelList extends Component{
                 {this.state.rule_list.map((rule,i) => (<Funnel rule={rule} info = {this.state.info} handleSwitch = {this.handleSwitch}/>))}
             </CardColumns>
                 <Link to="/calendar/">
-                <Button>
+                <Button variant="outline-secondary">
                 カレンダへ戻る
             </Button>
                 </Link>&nbsp;
