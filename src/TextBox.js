@@ -1,9 +1,9 @@
 import React from 'react';
+import Form from 'react-bootstrap/Form'
 
 const TextBox =(props)=> {
 	return (
-		<input type="text"  style = {{width: 500}}  onChange={props.handleTextChange}>
-		</input>
+		<Form.Control  onChange={props.handleTextChange}/>
 	);
 }
 
