@@ -9,6 +9,35 @@ import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Funnel extends Component {
+    constructor() {
+		super();
+        this.handleSwitch = this.handleSwitch.bind(this);
+        this.post_exec_funnel = this.post_exec_funnel.bind(this);
+    }
+
+    post_exec_funnel(exec_funnel){
+        fetch("http://localhost:4567/info/exec_funnel", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(exec_funnel)
+        })
+    }
+
+    handleSwitch(event){
+        var exec_funnel = []
+        if (event.target.checked) {
+            this.props.info.exec_funnel.push(this.props.rule.name)
+            var exec_funnel = this.props.info.exec_funnel.filter(function (x, i, self) {
+                return self.indexOf(x) === i;
+            })
+        } else {
+            var exec_funnel = this.props.info.exec_funnel.filter(n => n !== this.props.rule.name);
+        }
+        this.post_exec_funnel(exec_funnel)
+    }
     render () {
         return (
             <Card>
@@ -29,7 +58,8 @@ class Funnel extends Component {
                   </ListGroup.Item>
                 </ListGroup>
                 <Row>
-                  <Col><Toggle onChange={this.handleSwitch} /></Col>
+                  <Col><Toggle defaultChecked={this.props.rule.status}
+                               onChange={this.handleSwitch} /></Col>
                   <Col><Link to={"/settings/" + this.props.rule.name}><Button>Settings</Button></Link></Col>
                 </Row>
               </Card.Body>

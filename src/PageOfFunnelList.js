@@ -17,6 +17,10 @@ class PageOfFunnelList extends Component{
     // json-serverから読む処理
     componentDidMount(){
         //var funnels = "";
+        fetch( "http://localhost:4567/info/")
+            .then( response => response.json() )
+            .then( json =>  {this.setState({ info: json });
+                            });
         fetch( "http://localhost:4567/funnels/")
             .then( response => response.json() )
             .then( json =>  {this.setState({ funnels: json });
@@ -54,11 +58,18 @@ class PageOfFunnelList extends Component{
                                  const outlet = this.state.outlets.find((outlet) => {
                                      return (outlet.name === this.state.funnels[k].outlet_name);
                                  });
+                                 var status = false;
+                                 this.state.info.exec_funnel.map(v => {
+                                     console.log(v)
+                                     if (v == this.state.funnels[k].name){status = true;}
+                                 });
+
                                  var rule = {
                                      name: this.state.funnels[k].name,
                                      filter: filter,
                                      action: action,
-                                     outlet: outlet
+                                     outlet: outlet,
+                                     status: status
                                  };
                                  rule_list.push(rule);
                              }
@@ -83,7 +94,8 @@ class PageOfFunnelList extends Component{
                 outlet: {
                     name: this.props.location.state.o_name,
                     informant: this.props.location.state.outlet_dsl
-                }
+                },
+                status: false
             };
         }
 
@@ -101,8 +113,8 @@ class PageOfFunnelList extends Component{
               <h1>RuleList</h1>
               <p/>
               <CardColumns>
-                {rule && <Funnel rule={rule}/>}
-                {this.state.rule_list.map((rule,i) => (<Funnel rule={rule}/>))}
+                {rule && <Funnel rule={rule} info = {this.state.info} handleSwitch = {this.handleSwitch}/>}
+                {this.state.rule_list.map((rule,i) => (<Funnel rule={rule} info = {this.state.info} handleSwitch = {this.handleSwitch}/>))}
             </CardColumns>
                 <Link to="/calendar/">
                 <Button>
