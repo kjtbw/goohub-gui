@@ -45,7 +45,7 @@ class PageOfMakeOutlet extends Component{
                     filter_dsl: this.props.location.state.filter_dsl,
                     a_name: this.props.location.state.a_name,
                     action_dsl: this.props.location.state.action_dsl,
-                    o_name: this.state.name,
+                    o_name: "fit2019",
                     outlet_dsl: outlet_dsl
                    },});}
 
@@ -68,9 +68,7 @@ class PageOfMakeOutlet extends Component{
 		return(
 			<div>
               <Container>
-                <h1>Outlet</h1>
-                <h4>共有先</h4>
-                アウトレット名: <TextBox handleTextChange = {this.handleNameChange}/>
+                <h1>共有先</h1>
                 <p/>
                 共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleOpponentChange}/>
 			    <p/>
@@ -78,11 +76,7 @@ class PageOfMakeOutlet extends Component{
                 <p/>
                 ルール名: {this.props.location.state.name}
 			    <br/>
-                フィルタ名: {this.props.location.state.f_name}
-                <br/>
                 適用条件: {this.props.location.state.filter_dsl}
-                <br/>
-                アクション名: {this.props.location.state.a_name}
                 <br/>
                 編集方法: {this.props.location.state.action_dsl}
                 <p/>

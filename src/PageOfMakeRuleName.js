@@ -38,7 +38,7 @@ class PageOfMakeRuleName extends Component{
                   </Link>&nbsp;
 
                   <Button onClick={this.handleNext}>
-                    フィルタの設定へ
+                    適用条件の設定へ
                   </Button>
                 </h4>
               </Container>

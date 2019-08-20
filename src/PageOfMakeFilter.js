@@ -33,7 +33,7 @@ class PageOfMakeFilter extends Component{
         this.props.history.push({
             pathname: "/make/action",
             state: { name: this.props.location.state.name,
-                     f_name: this.state.name,
+                     f_name: "fit2019",
                      filter_dsl: this.state.filter_dsl }
         });
     }
@@ -42,10 +42,7 @@ class PageOfMakeFilter extends Component{
 		return(
 			<div>
               <Container>
-                <h1>Filter</h1>
-                <h4>適用条件</h4>
-                <br/>
-                フィルタ名: <TextBox handleTextChange = {this.handleNameChange}/>
+                <h1>適用条件</h1>
                 <p/>
                 予定名: <TextBox handleTextChange = {this.handleS}/>
                 <p/>
@@ -71,7 +68,7 @@ class PageOfMakeFilter extends Component{
                   </Link>&nbsp;
 
                   <Button onClick={this.handleNext}>
-                    アクションの設定へ
+                    編集方法の設定へ
                   </Button>
                 </h4>
               </Container>

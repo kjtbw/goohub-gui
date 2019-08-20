@@ -45,16 +45,16 @@ class Funnel extends Component {
                 <Card.Title>{this.props.rule.name}</Card.Title>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
-                    <Card.Subtitle className="mb-2 text-muted">Filter</Card.Subtitle>
-                    <ObjectList data = {this.props.rule.filter}/>
+                    <Card.Subtitle className="mb-2 text-muted">適用条件</Card.Subtitle>
+                    <ol><ul>{this.props.rule.filter.condition}</ul></ol>
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <Card.Subtitle className="mb-2 text-muted">Action</Card.Subtitle>
-                    <ObjectList data = {this.props.rule.action}/>
+                    <Card.Subtitle className="mb-2 text-muted">編集方法</Card.Subtitle>
+                    <ol><ul>{this.props.rule.action.modifier}</ul></ol>
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <Card.Subtitle className="mb-2 text-muted">Outlet</Card.Subtitle>
-                    <ObjectList data = {this.props.rule.outlet}/>
+                    <Card.Subtitle className="mb-2 text-muted">共有先</Card.Subtitle>
+                    <ol><ul>{this.props.rule.outlet.informant}</ul></ol>
                   </ListGroup.Item>
                 </ListGroup>
                 <Row>

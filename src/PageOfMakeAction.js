@@ -25,7 +25,7 @@ class PageOfMakeAction extends Component{
             state: { name: this.props.location.state.name,
                      f_name: this.props.location.state.f_name,
                      filter_dsl: this.props.location.state.filter_dsl,
-                     a_name: this.state.name,
+                     a_name: "fit2019",
                      action_dsl: this.state.action_dsl
                    }, });}
 
@@ -33,16 +33,11 @@ class PageOfMakeAction extends Component{
 		return(
 			<div>
               <Container>
-                <h1>Action</h1>
-                <h4>編集方法</h4>
-                アクション名: <TextBox handleTextChange = {this.handleNameChange}/>
+                <h1>編集方法</h1>
                 <br/>
                 編集方法: <TextBox handleTextChange = {this.handleM}/>
                 <p/>
-
                 ルール名: {this.props.location.state.name}
-                <br/>
-                フィルタ名: {this.props.location.state.f_name}
                 <br/>
                 適用条件: {this.props.location.state.filter_dsl}
                 <p/>
