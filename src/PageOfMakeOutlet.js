@@ -16,26 +16,49 @@ class PageOfMakeOutlet extends Component{
             "Slack"
         ];
 		this.state = {
-            address: "",
+            mail_address: "",
+            calendar_id: "",
             opponents: opponents,
             opponent: opponents[0],
             name: "",
             f_names: [],
             outlet_dsl: "",
+            address_input: ""
 		};
         this.handleNext = this.handleNext.bind(this);
         this.handleBack = this.handleBack.bind(this);
         this.handleOpponentChange = this.handleOpponentChange.bind(this);
-        this.handleAddressChange = this.handleAddressChange.bind(this);
+        this.handleMailChange = this.handleMailChange.bind(this);
+        this.handleCalendarChange = this.handleCalendarChange.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
 	}
+
+    componentDidMount(){
+        fetch( "http://localhost:4567/info/calendars")
+            .then( response => response.json() )
+            .then( json =>  {
+                // sleep処理
+                const d1 = new Date();
+                while (true) {
+                    const d2 = new Date();
+                    if (d2 - d1 > 100) {
+                        break;
+                    }
+                }
+                var calendars = {"":""}
+                json.items.map(c => {
+                    calendars[c.summary] = c.id
+                })
+                this.setState({calendars: calendars});
+            });
+    }
 
     handleNext(){
         var outlet_dsl = "";
         if(this.state.opponent === "Google カレンダー"){
-            outlet_dsl = "google_calendar : " + this.state.address}
+            outlet_dsl = "google_calendar : " + this.state.calendar_id}
         if(this.state.opponent === "メール"){
-            outlet_dsl = "mail : " + this.state.address
+            outlet_dsl = "mail : " + this.state.mail_address
         }
         if(this.state.opponent === "Slack"){
             outlet_dsl = "slack"
@@ -64,8 +87,24 @@ class PageOfMakeOutlet extends Component{
 
 
     handleNameChange(event){this.setState({name: event.target.value});}
-    handleOpponentChange(event){this.setState({opponent: event.target.value});}
-	handleAddressChange(event){this.setState({address: event.target.value});}
+	handleMailChange(event){this.setState({mail_address: event.target.value});}
+    handleCalendarChange(event){this.setState({calendar_id: this.state.calendars[event.target.value]});}
+
+    handleOpponentChange(event){
+        this.setState({opponent: event.target.value});
+        if(event.target.value === "" | event.target.value === "Slack"){
+            this.setState({address_input:""})
+        }if(event.target.value === "Google カレンダー"){
+            console.log(event.target.value);
+            this.setState({address_input:<div>
+                           カレンダ名: <PullDown data = {Object.keys(this.state.calendars).sort()} handleChange = {this.handleCalendarChange}/>
+                           </div>})
+        } if(event.target.value === "メール"){
+            this.setState({address_input:<div>
+                           メールアドレス: <Form.Control placeholder="family@gmail.com" onChange = {this.handleMailChange}/>
+                           </div>});
+        }
+    }
 
 	render(){
 		return(
@@ -75,7 +114,8 @@ class PageOfMakeOutlet extends Component{
                 <p/>
                 共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleOpponentChange}/>
 			    <p/>
-			    引数: <Form.Control placeholder="family@gmail.com" onChange = {this.handleAddressChange}/>(例: メールアドレス，カレンダID)
+                {this.state.address_input}
+
                 <p/>
                 ルール名: {this.props.location.state.name}
 			    <br/>
