@@ -32,7 +32,7 @@ class PageOfMakeFilter extends Component{
     handleNext(){
         this.props.history.push({
             pathname: "/make/action",
-            state: { name: this.props.location.state.name,
+            state: { name: this.state.name,
                      f_name: "fit2019",
                      filter_dsl: this.state.filter_dsl }
         });
@@ -42,7 +42,10 @@ class PageOfMakeFilter extends Component{
 		return(
 			<div>
               <Container>
-                <h1>適用条件</h1>
+                <h1>ルールの作成</h1>
+                ルール名: <TextBox handleTextChange = {this.handleNameChange}/>
+                <p/>
+                <h3>適用条件</h3>
                 <p/>
                 予定名: <TextBox handleTextChange = {this.handleS}/>
                 <p/>
@@ -55,11 +58,7 @@ class PageOfMakeFilter extends Component{
                 参加者: <TextBox handleTextChange = {this.handleA}/>
                 <p/>
                 説明: <TextBox handleTextChange = {this.handleD}/>
-
                 <p/>
-                ルール名: {this.props.location.state.name}
-                <p/>
-
                 <h4>
                   <Link to="/calendar/">
                     <Button variant="outline-secondary">
@@ -68,7 +67,7 @@ class PageOfMakeFilter extends Component{
                   </Link>&nbsp;
 
                   <Button variant="outline-success" onClick={this.handleNext}>
-                    編集方法の設定へ
+                    加工方法の設定へ
                   </Button>
                 </h4>
               </Container>

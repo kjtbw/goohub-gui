@@ -33,9 +33,9 @@ class PageOfMakeAction extends Component{
 		return(
 			<div>
               <Container>
-                <h1>編集方法</h1>
+                <h1>加工方法</h1>
                 <br/>
-                編集方法: <TextBox handleTextChange = {this.handleM}/>
+                加工方法: <TextBox handleTextChange = {this.handleM}/>
                 <p/>
                 ルール名: {this.props.location.state.name}
                 <br/>
@@ -51,7 +51,7 @@ class PageOfMakeAction extends Component{
 
                   <Link to="/make/filter/">
                     <Button variant="outline-secondary">
-                      フィルタの作成へ戻る
+                      適用条件の設定へ戻る
                     </Button>
                   </Link>&nbsp;
 

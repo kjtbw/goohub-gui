@@ -10,9 +10,9 @@ class PageOfMakeOutlet extends Component{
 		super();
         var opponents = [
             "",
-            "google_calendar",
-            "mail",
-            "slack"
+            "Google カレンダー",
+            "メール",
+            "Slack"
         ];
 		this.state = {
             address: "",
@@ -30,12 +30,14 @@ class PageOfMakeOutlet extends Component{
 	}
 
     handleNext(){
-
         var outlet_dsl = "";
-        if((this.state.opponent === "google_calendar") | (this.state.opponent === "mail")){
-            outlet_dsl = this.state.opponent + " : " + this.state.address}
-        if(this.state.opponent === "slack"){
-            outlet_dsl = this.state.opponent
+        if(this.state.opponent === "Google カレンダー"){
+            outlet_dsl = "google_calendar : " + this.state.address}
+        if(this.state.opponent === "メール"){
+            outlet_dsl = "mail : " + this.state.address
+        }
+        if(this.state.opponent === "Slack"){
+            outlet_dsl = "slack"
         }
 
         this.props.history.push({
@@ -78,7 +80,7 @@ class PageOfMakeOutlet extends Component{
 			    <br/>
                 適用条件: {this.props.location.state.filter_dsl}
                 <br/>
-                編集方法: {this.props.location.state.action_dsl}
+                加工方法: {this.props.location.state.action_dsl}
                 <p/>
 
                 <h4>
@@ -89,11 +91,11 @@ class PageOfMakeOutlet extends Component{
                   </Link>&nbsp;
 
                   <Button variant="outline-secondary" onClick={this.handleBack}>
-                    アクションの作成へ戻る
+                    加工方法の設定へ戻る
                   </Button>
 
                   <Button variant="outline-success" onClick={this.handleNext}>
-                    ルールの一覧へ
+                    ルールを作成
                   </Button>
 
                 </h4>

@@ -72,7 +72,7 @@ class PageOfFunnelList extends Component{
                                  };
                                  rule_list.push(rule);
                              }
-                             this.setState({rule_list: rule_list});
+                             this.setState({rule_list: rule_list.reverse()});
                             });
 
         // post処理を書く予定

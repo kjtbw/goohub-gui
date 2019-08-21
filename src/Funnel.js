@@ -49,7 +49,7 @@ class Funnel extends Component {
                     <ol><ul>{this.props.rule.filter.condition}</ul></ol>
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <Card.Subtitle className="mb-2 text-muted">編集方法</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">加工方法</Card.Subtitle>
                     <ol><ul>{this.props.rule.action.modifier}</ul></ol>
                   </ListGroup.Item>
                   <ListGroup.Item>
