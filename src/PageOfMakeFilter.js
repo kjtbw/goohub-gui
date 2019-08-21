@@ -3,6 +3,7 @@ import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container  from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form'
 
 class PageOfMakeFilter extends Component{
 	constructor() {
@@ -43,21 +44,19 @@ class PageOfMakeFilter extends Component{
 			<div>
               <Container>
                 <h1>ルールの作成</h1>
-                ルール名: <TextBox handleTextChange = {this.handleNameChange}/>
+                ルール名: <Form.Control placeholder="就活の予定の詳細を隠す" onChange = {this.handleNameChange}/>
                 <p/>
                 <h3>適用条件</h3>
                 <p/>
-                予定名: <TextBox handleTextChange = {this.handleS}/>
+                予定名: <Form.Control placeholder="就活，打合せ & 学会, !講義" onChange = {this.handleS}/>
                 <p/>
-                開始日時: <TextBox handleTextChange = {this.handleDS}/>
+                開始日時: <Form.Control placeholder="after : 17:00, before : 12:00, 2019-8-1 .. 2019-8-31" onChange = {this.handleDS}/>
                 <p/>
-                終了日時: <TextBox handleTextChange = {this.handleDE}/>
+                終了日時: <Form.Control placeholder="after : 17:00, before : 12:00, 2019-8-1 .. 2019-8-31" onChange = {this.handleDE}/>
                 <p/>
-                場所: <TextBox handleTextChange = {this.handleL}/>
+                場所: <Form.Control placeholder="103号室，104号室 | 201号室, !11講義室" onChange = {this.handleL}/>
                 <p/>
-                参加者: <TextBox handleTextChange = {this.handleA}/>
-                <p/>
-                説明: <TextBox handleTextChange = {this.handleD}/>
+                説明: <Form.Control placeholder="交通費，資料 | 議事録，!先生" onChange = {this.handleD}/>
                 <p/>
                 <h4>
                   <Link to="/calendar/">

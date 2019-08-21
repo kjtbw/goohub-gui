@@ -3,6 +3,7 @@ import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container  from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form'
 
 class PageOfMakeAction extends Component{
 	constructor() {
@@ -35,7 +36,7 @@ class PageOfMakeAction extends Component{
               <Container>
                 <h1>加工方法</h1>
                 <br/>
-                加工方法: <TextBox handleTextChange = {this.handleM}/>
+                加工方法: <Form.Control placeholder="hide : description & hide : location, replace : summary : 私用, hide_event" onChange = {this.handleM}/>
                 <p/>
                 ルール名: {this.props.location.state.name}
                 <br/>

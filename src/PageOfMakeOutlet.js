@@ -4,6 +4,7 @@ import TextBox from './TextBox';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container  from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form'
 
 class PageOfMakeOutlet extends Component{
 	constructor() {
@@ -74,7 +75,7 @@ class PageOfMakeOutlet extends Component{
                 <p/>
                 共有先: <PullDown data = {this.state.opponents} handleChange = {this.handleOpponentChange}/>
 			    <p/>
-			    引数: <TextBox handleTextChange = {this.handleAddressChange}/>(例: メールアドレス，カレンダID)
+			    引数: <Form.Control placeholder="family@gmail.com" onChange = {this.handleAddressChange}/>(例: メールアドレス，カレンダID)
                 <p/>
                 ルール名: {this.props.location.state.name}
 			    <br/>
