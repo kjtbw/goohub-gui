@@ -16,66 +16,55 @@ class PageOfFunnelList extends Component{
 
     // json-serverから読む処理
     componentDidMount(){
-        //var funnels = "";
-        fetch( "http://localhost:4567/info/")
+        fetch( "http://localhost:4567/info/calendars")
             .then( response => response.json() )
-            .then( json =>  {this.setState({ info: json });
+            .then( calendars_json =>  {
+                fetch( "http://localhost:4567/funnels/")
+                    .then( response => response.json() )
+                    .then( funnels => {
+                        fetch("http://localhost:4567/filters/")
+                            .then( response => response.json() )
+                            .then( filters =>  {
+                                fetch("http://localhost:4567/actions/")
+                                    .then( response => response.json() )
+                                    .then( actions =>  {
+                                        fetch("http://localhost:4567/outlets/")
+                                            .then( response => response.json() )
+                                            .then( outlets =>  {
+                                                fetch( "http://localhost:4567/info/")
+                                                    .then( response => response.json() )
+                                                    .then( info =>  {
+                                                        var rule_list = [];
+                                                        for(let k in funnels){
+                                                            const filter = filters.find((filter) => {
+                                                                return (filter.name === funnels[k].filter_name);
+                                                            });
+                                                            const action = actions.find((action) => {
+                                                                return (action.name === funnels[k].action_name);
+                                                            });
+                                                            const outlet = outlets.find((outlet) => {
+                                                                return (outlet.name === funnels[k].outlet_name);
+                                                            });
+                                                            var status = false;
+                                                            info.exec_funnel.map(v => {
+                                                                if (v == funnels[k].name){status = true;}
+                                                            });
+                                                            var rule = {
+                                                                name: funnels[k].name,
+                                                                filter: filter,
+                                                                action: action,
+                                                                outlet: outlet,
+                                                                status: status
+                                                            };
+                                                            rule_list.push(rule);
+                                                        }
+                                                        this.setState({rule_list: rule_list.reverse()});
+                                                    });
+                                            });
+                                    });
                             });
-        fetch( "http://localhost:4567/funnels/")
-            .then( response => response.json() )
-            .then( json =>  {this.setState({ funnels: json });
-                            });
-        fetch("http://localhost:4567/filters/")
-            .then( response => response.json() )
-            .then( json =>  {this.setState({ filters: json });
-                            });
-        fetch("http://localhost:4567/actions/")
-            .then( response => response.json() )
-            .then( json =>  {this.setState({ actions: json });
-                            });
-
-        // sleep処理
-        const d1 = new Date();
-        while (true) {
-            const d2 = new Date();
-            if (d2 - d1 > 100) {
-                break;
-            }
-        }
-
-        // データの取得には，数~数十msecかかるので，取得処理の最後に処理を書く，この外に書くと，データ取得前に処理を実行しようとするので，""を処理しようとする
-        fetch("http://localhost:4567/outlets/")
-            .then( response => response.json() )
-            .then( json =>  {this.setState({ outlets: json });
-                             var rule_list = [];
-                             for(let k in this.state.funnels){
-                                 const filter = this.state.filters.find((filter) => {
-                                     return (filter.name === this.state.funnels[k].filter_name);
-                                 });
-                                 const action = this.state.actions.find((action) => {
-                                     return (action.name === this.state.funnels[k].action_name);
-                                 });
-                                 const outlet = this.state.outlets.find((outlet) => {
-                                     return (outlet.name === this.state.funnels[k].outlet_name);
-                                 });
-                                 var status = false;
-                                 this.state.info.exec_funnel.map(v => {
-                                     if (v == this.state.funnels[k].name){status = true;}
-                                 });
-
-                                 var rule = {
-                                     name: this.state.funnels[k].name,
-                                     filter: filter,
-                                     action: action,
-                                     outlet: outlet,
-                                     status: status
-                                 };
-                                 rule_list.push(rule);
-                             }
-                             this.setState({rule_list: rule_list.reverse()});
-                            });
-
-        // post処理を書く予定
+                    });
+            });
     }
 
     render(){
