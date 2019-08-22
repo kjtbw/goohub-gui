@@ -71,7 +71,7 @@ class PageOfMakeOutlet extends Component{
                     filter_dsl: this.props.location.state.filter_dsl,
                     a_name: this.props.location.state.a_name,
                     action_dsl: this.props.location.state.action_dsl,
-                    o_name: "fit2019",
+                    o_name: this.props.location.state.name,
                     outlet_dsl: outlet_dsl
                    },});}
 

@@ -34,7 +34,7 @@ class PageOfMakeFilter extends Component{
         this.props.history.push({
             pathname: "/make/action",
             state: { name: this.state.name,
-                     f_name: "fit2019",
+                     f_name: this.state.name,
                      filter_dsl: this.state.filter_dsl }
         });
     }

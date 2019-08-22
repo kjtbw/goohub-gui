@@ -26,7 +26,7 @@ class PageOfMakeAction extends Component{
             state: { name: this.props.location.state.name,
                      f_name: this.props.location.state.f_name,
                      filter_dsl: this.props.location.state.filter_dsl,
-                     a_name: "fit2019",
+                     a_name: this.props.location.state.name,
                      action_dsl: this.state.action_dsl
                    }, });}
 
