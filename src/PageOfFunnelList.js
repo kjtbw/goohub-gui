@@ -59,6 +59,12 @@ class PageOfFunnelList extends Component{
                                                             rule_list.push(rule);
                                                         }
                                                         this.setState({rule_list: rule_list.reverse()});
+                                                        var calendars = []
+                                                        calendars_json.items.map(c => {
+                                                            calendars[c.summary] = c.id
+                                                        })
+                                                        this.setState({calendars: calendars});
+                                                        console.log(this.state.calendars)
                                                     });
                                             });
                                     });
@@ -95,15 +101,13 @@ class PageOfFunnelList extends Component{
                 body: JSON.stringify(rule)
             })
         }
-
-
 	    return(
 		    <div>
               <h1>RuleList</h1>
               <p/>
               <CardColumns>
-                {rule && <Funnel rule={rule} info = {this.state.info} handleSwitch = {this.handleSwitch}/>}
-                {this.state.rule_list.map((rule,i) => (<Funnel rule={rule} info = {this.state.info} handleSwitch = {this.handleSwitch}/>))}
+                {rule && <Funnel rule={rule} info = {this.state.info} calendars = {this.state.calendars} handleSwitch = {this.handleSwitch}/>}
+                {this.state.rule_list.map((rule,i) => (<Funnel rule={rule} info = {this.state.info} calendars = {this.state.calendars} handleSwitch = {this.handleSwitch}/>))}
             </CardColumns>
                 <Link to="/calendar/">
                 <Button variant="outline-secondary">
