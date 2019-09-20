@@ -59,6 +59,8 @@ class PageOfFunnelList extends Component{
                                                             rule_list.push(rule);
                                                         }
                                                         this.setState({rule_list: rule_list.reverse()});
+                                                        this.setState({info: info});
+
                                                         var calendars = []
                                                         calendars_json.items.map(c => {
                                                             calendars[c.summary] = c.id
@@ -91,15 +93,6 @@ class PageOfFunnelList extends Component{
                 },
                 status: false
             };
-
-            fetch("http://localhost:4567/funnels", {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(rule)
-            })
         }
 	    return(
 		    <div>
@@ -116,6 +109,16 @@ class PageOfFunnelList extends Component{
                 </Link>&nbsp;
 		    </div>
 	    );
+
+        // ページを描画してから，post
+        fetch("http://localhost:4567/funnels", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(rule)
+        })
     }
 }
 
