@@ -98,7 +98,7 @@ class Funnel extends Component {
                 console.log(this.props.calendars)
                 dsl = dsl.replace("google_calendar", "Google カレンダー")
                 dsl = dsl.replace("m8m131libkfur4mktvcl72aano@group.calendar.google.com", "nomlab")
-                dsl = dsl.replace("d8bjck0kunfsn90uabknaipleo@group.calendar.google.com", "104")
+                dsl = dsl.replace("d8bjck0kunfsn90uabknaipleo@group.calendar.google.com", "会議室1A")
                 return dsl
             case "mail":
                 return dsl.replace("mail", "メール")

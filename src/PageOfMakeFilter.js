@@ -44,7 +44,7 @@ class PageOfMakeFilter extends Component{
 			<div>
               <Container>
                 <h1>ルールの作成</h1>
-                ルール名: <Form.Control placeholder="就活の予定の詳細を隠す" onChange = {this.handleNameChange}/>
+                ルール名: <Form.Control placeholder="就活の予定の詳細を隠して研究室のカレンダに共有" onChange = {this.handleNameChange}/>
                 <p/>
                 <h3>適用条件</h3>
                 <p/>
