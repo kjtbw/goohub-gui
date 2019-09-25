@@ -1,0 +1,87 @@
+#+TITLE: goohub-gui -- GUI for goohub
+
+* Summary
+  goohub-guiは，[[https://github.com/kjtbw/goohub][goohub]] の操作をGUIで行うためのシステムである．
+  ここで，goohubは，Google Calendarとの認証を行い，予定の取得や送信を行うCLIツールである．
+  goohub-guiを利用することで，ルール(funnel, filter, action, outlet)の作成，ルールの閲覧，カレンダの閲覧をGUI から行える．
+
+* Requirements
++ node 10.5.0 ~
++ npm 6.9.0 ~
+
+* Installation and Setup
+** goohub Setup
+   goohub-guiは，[[https://github.com/kjtbw/goohub][goohub]] の操作をGUIで行うためのシステムである．
+   このため，goohubのリソースを管理するHTTPサーバが立っていることを前提として，システムが動作する．
+   よって，goohub-guiを利用するためには，最初に，goohubを利用できるようにする必要がある．
+
+1. Setup for development Function
+
+   [[https://github.com/kjtbw/goohub#installation-and-setup][goohubのREADME]] に従い，goohubのsetupをする．
+   HTTPサーバを立てるためのコマンド(`$goohub sinatra`)は，現在開発中の機能である．
+   よって，README中の，[[https://github.com/kjtbw/goohub#use-development-function][Use Development Function]] に従い，setupする．
+
+2. Run HTTP server
+   #+BEGIN_SRC sh
+ $goohub sinatra
+   #+END_SRC
+  上記コマンドにより，HTTPサーバがlocalhost:4567で稼働する．
+  goohub-guiは，上記サーバを介して，goohubのリソースにアクセスする．
+
+** goohub-gui setup
+上記の`goohub setup`  でgoohubのリソースを管理するHTTPサーバを立てたら，次にgoohub-guiのsetupをする．
+
+1. Clone code
+   #+BEGIN_SRC sh
+ $ git clone git@github.com:kjtbw/goohub-gui.git
+   #+END_SRC
+
+2. Install librarys
+   #+BEGIN_SRC sh
+ $npm install
+   #+END_SRC
+
+3. run
+   #+BEGIN_SRC sh
+ $npm start
+   #+END_SRC
+  成功すると，localhost:3000に，サーバが立つ．
+  ブラウザからアクセスすると，TOP画面が表示される．
+
+* Usage
+  goohub-guiを利用することで，ルール(funnel, filter, action, outlet)の作成，ルールの閲覧，カレンダの閲覧をGUI から行える．
+  goohub guiは，現在以下の画面をもつ．
+
+  | PATH        | SUMMARY          |
+  | /           | TOP画面          |
+  | /calendar   | カレンダ閲覧画面(goohub がもつ予定の情報を，カレンダ形式で表示) |
+  | /list       | ルール一覧画面(goohubがもつルール(funnel)の一覧を表示)    この画面から，exec_funnelを設定できる． |
+  | make/filter | filter 作成画面  |
+  | make/action | action 作成画面  |
+  | make/outlet | outlet 作成画面      |
+
++ [[https://github.com/kjtbw/goohub/wiki/%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%8C%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E5%BD%A2%E5%BC%8F][ルール(funnel, filter, action, outlet)の詳細]]
++ [[https://github.com/kjtbw/goohub/tree/dev_master#install-and-setup][exec_funnel(goohubのsettings.yml内のデータ)の詳細]]
+
+* For Developer Information
+** System architecture
+goohubとgoohub-guiを組み合わせると，以下のことができる．
++ guiを利用したルール(funnel, filter, action, outlet)の作成
++ guiを利用したルールの適用状況(exec_funnel)の設定
++ guiを利用した予定の閲覧
++ ルールの自動実行
+
+上記のことを行う場合，システムの構成としては以下のようになる．
+1. ルール実行部
+
+   goohubの `server_test.sh`を用いて，カレンダの更新に合わせて自動でfunnelを適用する．
+
+2. リソース管理部(HTTPサーバ)
+
+   `$goohub sinatra`でHTTPサーバをlocalhost:4567に立てる．
+   このサーバは，goohub-guiとリソースのやりとりをする．
+
+3. GUIサーバ部
+
+   goohub-guiのサーバをlocalhost:3000に立てる．
+   このサーバは，ユーザがブラウザからアクセスするサーバである．
