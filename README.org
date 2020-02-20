@@ -9,27 +9,30 @@
 + node 10.5.0 ~
 + npm 6.9.0 ~
 
+nodeのインストールについては，以下を参考にすること．
+なお，npmについては，nodeをインストールすると同時にインストールされる([[https://www.npmjs.com/get-npm][参考]])．
++ [[https://nodejs.org/ja/download/][nodeのインストール方法]]
+
+
 * Installation and Setup
-** goohub Setup
+** goohub and HTTP server setup
    goohub-guiは，[[https://github.com/kjtbw/goohub][goohub]] の操作をGUIで行うためのシステムである．
    このため，goohubのリソースを管理するHTTPサーバが立っていることを前提として，システムが動作する．
    よって，goohub-guiを利用するためには，最初に，goohubを利用できるようにする必要がある．
 
-1. Setup for development Function
+1. goohub setup
 
-   [[https://github.com/kjtbw/goohub#installation-and-setup][goohubのREADME]] に従い，goohubのsetupをする．
-   HTTPサーバを立てるためのコマンド(`$goohub sinatra`)は，現在開発中の機能である．
-   よって，README中の，[[https://github.com/kjtbw/goohub#use-development-function][Use Development Function]] に従い，setupする．
+   [[https://github.com/kjtbw/goohub/tree/dev_master][goohubのREADME]] に従い，goohubのsetupをする．
 
 2. Run HTTP server
    #+BEGIN_SRC sh
  $goohub sinatra
    #+END_SRC
-  上記コマンドにより，HTTPサーバがlocalhost:4567で稼働する．
+  上記コマンドにより，HTTPサーバが =localhost:4567= で稼働する．
   goohub-guiは，上記サーバを介して，goohubのリソースにアクセスする．
 
 ** goohub-gui setup
-上記の`goohub setup`  でgoohubのリソースを管理するHTTPサーバを立てたら，次にgoohub-guiのsetupをする．
+上記の =goohub and HTTP sercer setup= でgoohubのリソースを管理するHTTPサーバを立てたら，次にgoohub-guiのsetupをする．
 
 1. Clone code
    #+BEGIN_SRC sh
@@ -45,25 +48,25 @@
    #+BEGIN_SRC sh
  $npm start
    #+END_SRC
-  成功すると，localhost:3000に，サーバが立つ．
+  成功すると， =localhost:3000= に，サーバが立つ．
   ブラウザからアクセスすると，TOP画面が表示される．
 
 * Usage
   goohub-guiを利用することで，ルール(funnel, filter, action, outlet)の作成，ルールの閲覧，カレンダの閲覧をGUI から行える．
   goohub guiは，現在以下の画面をもつ．
 
-  | PATH        | SUMMARY          |
-  | /           | TOP画面          |
-  | /calendar   | カレンダ閲覧画面(goohub がもつ予定の情報を，カレンダ形式で表示) |
+  | PATH        | SUMMARY                                                                                           |
+  | /           | TOP画面                                                                                           |
+  | /calendar   | カレンダ閲覧画面(goohub がもつ予定の情報を，カレンダ形式で表示)                                   |
   | /list       | ルール一覧画面(goohubがもつルール(funnel)の一覧を表示)    この画面から，exec_funnelを設定できる． |
-  | make/filter | filter 作成画面  |
-  | make/action | action 作成画面  |
-  | make/outlet | outlet 作成画面      |
+  | make/filter | filter 作成画面                                                                                   |
+  | make/action | action 作成画面                                                                                   |
+  | make/outlet | outlet 作成画面                                                                                   |
 
 + [[https://github.com/kjtbw/goohub/wiki/%E3%83%A6%E3%83%BC%E3%82%B6%E3%81%8C%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E3%83%AB%E3%83%BC%E3%83%AB%E3%81%AE%E5%BD%A2%E5%BC%8F][ルール(funnel, filter, action, outlet)の詳細]]
 + [[https://github.com/kjtbw/goohub/tree/dev_master#install-and-setup][exec_funnel(goohubのsettings.yml内のデータ)の詳細]]
 
-* For Developer Information
+* For Developers
 ** System architecture
 goohubとgoohub-guiを組み合わせると，以下のことができる．
 + guiを利用したルール(funnel, filter, action, outlet)の作成
@@ -74,14 +77,73 @@ goohubとgoohub-guiを組み合わせると，以下のことができる．
 上記のことを行う場合，システムの構成としては以下のようになる．
 1. ルール実行部
 
-   goohubの `server_test.sh`を用いて，カレンダの更新に合わせて自動でfunnelを適用する．
+   goohubの =server_test.sh= を用いて，カレンダの更新に合わせて自動でfunnelを適用する．
 
 2. リソース管理部(HTTPサーバ)
 
-   `$goohub sinatra`でHTTPサーバをlocalhost:4567に立てる．
+   =$goohub sinatra= でHTTPサーバを =localhost:4567= に立てる．
    このサーバは，goohub-guiとリソースのやりとりをする．
 
 3. GUIサーバ部
 
-   goohub-guiのサーバをlocalhost:3000に立てる．
+   goohub-guiのサーバを =localhost:3000= に立てる．
    このサーバは，ユーザがブラウザからアクセスするサーバである．
+
+** Directory Information
+goohub-guiのディレクトリ構成は以下のようになっている．
+#+BEGIN_SRC sh
+.
+├── README.org
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── ActionCollection.js
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── ArrayObjectList.js
+    ├── FilterCollection.js
+    ├── Funnel.js
+    ├── Home.js
+    ├── IoRedis.js
+    ├── List.js
+    ├── MyNavbar.js
+    ├── ObjectList.js
+    ├── PageOfAction.js
+    ├── PageOfCalendar.js
+    ├── PageOfCorrespondenceTable.js
+    ├── PageOfFilter.js
+    ├── PageOfFunnelList.js
+    ├── PageOfMakeAction.js
+    ├── PageOfMakeFilter.js
+    ├── PageOfMakeOutlet.js
+    ├── PageOfMakeRuleName.js
+    ├── PageOfSetting.js
+    ├── PullDown.js
+    ├── SubmitButton.js
+    ├── Switch.css
+    ├── Switch.js
+    ├── TextBox.js
+    ├── db
+    ├── events.js
+    ├── index.css
+    ├── index.html
+    ├── index.js
+    ├── logo.svg
+    └── registerServiceWorker.js
+#+END_SRC
+各ファイルやディレクトリの説明を以下に示す．
+| ディレクトリ/ファイル名 | 説明                                       |
+|-------------------------+--------------------------------------------|
+| README.org              | このファイル                               |
+| package.json            | パッケージの一覧                           |
+| public                  | 静的なファイル(index.html等)置き場         |
+| src/                    | 各種コンポーネントやページのファイル置き場 |
+
+src内には，コンポーネント(ボタンやプルダウン等)と，ページ(PageOf*.js)のファイルが置いてある．
+開発者は，新たに利用したいコンポーネントがあれば，まずそのコンポーネントを定義し，その後，ページを作成する．
+
+また，ページのルーティングは， =src/index.js= に定義されている．
